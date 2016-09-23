@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Case</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<style>
+.border {
+	border-style: solid;
+	border-width: 2px;
+}
+
+.border-right {
+	border-right-style: solid;
+	border-right-width: 2px;
+}
+
+.border-left {
+	border-left-style: solid;
+	border-left-width: 2px;
+}
+
+row.border {
+	border-style: solid;
+	border-width: 2px;
+}
+
+.themecolor {
+	background-color: #B2B2CC;
+}
+
+.themecolor-light {
+	background-color: #DCDCE0;
+}
+
+.jumbotron {
+	position: relative;
+	margin: 0;
+	right: 0;
+	padding-top: 10px;
+	width: 100%;
+	height: 230px;
+}
+.sticky {
+	position: relative;
+	}
+</style>
+
+<body>
+
+	<header class="container text-center">
+		<div class="jumbotron themecolor">
+			<h1>{competitionName}</h1>
+			<h2>{institutionName} on {competitionDate}</h2>
+			<h3>Round {roundNumber} - Ballot {ballotNumber}</h3>
+		</div>
+	</header>
+
+	<div class="container-fluid sticky">
+		<div class="row">
+			<div class="col-md-6 border">
+				<h2 class="text-center">Plantiff / Prosecution</h2>
+				<p id="pSideArguements"></p>
+			</div>
+			<div class="col-md-6 border">
+				<h2 class="text-center">Defense</h2>
+				<p id="dSideArguements"></p>
+			</div>
+		</div>
+	</div>
+
+	<footer class="row text-right small themecolor">
+		<p>
+			Property of Inadvisable Software 2015<br>Sometimes you just have
+			to say "Sure, I'll try that"<br>especially if someone dares
+			you...<br>... We dare you to think about your software that
+			way...
+		</p>
+	</footer>
+	</div>
+
+	<script>
+  var arguementNames = ["Opening Statement", "P Witness 1", "P Witness 2", "P Witness 3", "D Witness 1", "D Witness 2", "D Witness 3", "Closing Arguement"];
+  var i = 0;
+  var pSideArguementHTML = "";
+  var dSideArguementHTML = "";
+  for (i = 0; i < arguementNames.length; i++) {
+    pSideArguementHTML = pSideArguementHTML.concat('<div class="row border text-center themecolor-light"><h3>', arguementNames[i], '</h3></div>')
+    dSideArguementHTML = dSideArguementHTML.concat('<div class="row border text-center themecolor-light"><h3>', arguementNames[i], '</h3></div>')
+    arguementType = arguementNames[i].substr(0,1)
+    if (arguementType  == "O"||arguementType  == "C") {	
+		pSideArguementHTML += '<div class="row">'
+		pSideArguementHTML += '<div class="col-md-8"><p>Attorney {teamMemberName}</p></div>'
+		pSideArguementHTML += '<div class="col-md-4"><p>Score {arguementScore}</p></div>'
+		pSideArguementHTML += '</div>'
+        dSideArguementHTML += '<div class="row">'
+		dSideArguementHTML += '<div class="col-md-4"><p>Score {arguementScore}</p></div>'
+		dSideArguementHTML += '<div class="col-md-8"><p>Attorney {teamMemberName}</p></div>'
+		dSideArguementHTML += '</div>'
+  	} else {
+        pSideArguementHTML += '<div class="row">'
+		pSideArguementHTML += '<div class="col-md-8"><p>Attorney {teamMemberName}</p></div>'
+		pSideArguementHTML += '<div class="col-md-4"><p>Score {arguementScore}</p></div>'
+		pSideArguementHTML += '<div class="col-md-8"><p>Witness {teamMemberName}</p></div>'
+		pSideArguementHTML += '<div class="col-md-4"><p>Score {arguementScore}</p></div>'
+		pSideArguementHTML += '<div class="col-md-4"><p>Score {arguementScore}</p></div>'
+		pSideArguementHTML += '<div class="col-md-8"><p></p></div>'
+        pSideArguementHTML += '</div>'
+        pSideArguementHTML += '<div class="row">'
+        pSideArguementHTML += '<div class="col-md-12"><p></p></div>'
+       	pSideArguementHTML += '<div class="col-md-8"><p></p></div>'
+	    pSideArguementHTML += '<div class="col-md-4"><p>Score {arguementScore}</p></div>'
+        pSideArguementHTML += '</div>'
+        dSideArguementHTML += '<div class="row">'
+        dSideArguementHTML += '<div class="col-md-4"><p>Score {arguementScore}</p></div>'
+        dSideArguementHTML += '<div class="col-md-8"><p>Attorney {teamMemberName}</p></div>'
+        dSideArguementHTML += '<div class="col-md-4 border-left"><p>Score {arguementScore}</p></div>'
+        dSideArguementHTML += '<div class="col-md-8"><p>Witness {teamMemberName}</p></div>'
+        dSideArguementHTML += '</div>'
+      }  
+    }
+
+  document.getElementById("pSideArguements").innerHTML = pSideArguementHTML;
+  document.getElementById("dSideArguements").innerHTML = dSideArguementHTML;
+  </script>
+
+</body>
+</html>
