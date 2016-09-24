@@ -1,0 +1,8 @@
+<h1>Competitions</h1>
+<ul>
+	<% @competitions.each do |competition| %>
+		<li><%= competition.id %> - <%= competition.date %>- <%= competition.title %></li>
+	<% end %>
+</ul>
+
+	

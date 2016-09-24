@@ -1,0 +1,13 @@
+<h1> Competitions </h1>
+
+<h2>Enter a new competition</h2>
+
+<%= form_for @competition do |f| %>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+
+	<%= f.label :datetime %>
+	<%= f.datetime_field :datetime %>
+
+	<%= f.button %>
+<% end %>

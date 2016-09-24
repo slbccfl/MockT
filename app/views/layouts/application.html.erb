@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mockt</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Mockt</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
 
-  <body>
-  	<h1>MockT - Mock Trail Competition Archives</h1>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h1>MockT - Mock Trail Competition Archives</h1>
+      </div><!-- close columns -->
+      <div class="col-sm-4">
+      </div><!-- close columns -->
+      <div class="col-sm-2">
+        <% if current_user %>
+          <h4>Hello, <%= current_user.name %>!</h4>
+          <%= link_to "My profile", "/users/profile" %><br>
+          <%= link_to "Log out", "/users/sign_out", :method => :delete %><br>
 
-  	<p class="notice"><%= notice %></p>
-  	<p class="alert"><%= alert %></p>
+          <% if current_user.role == 'admin' %>
+            <%= link_to "All profiles", "/users" %><br>
+          <% end %>
+        <% else %>
+          <h4> Register for access to MockT </h4>
+          <%= link_to "Sign up", "/users/sign_up" %><br>
+          <%= link_to "Log in", "/users/sign_in" %><br>
+        <% end %>
+      </div><!-- close columns -->
+    </div><!-- close row -->
+  </div><!-- close container-->
 
-  	<% if user_signed_in? %>
 
-  		<p> Welcome <%= current_user.email %>! </p>
-  		<%= link_to "Logout", destroy_user_session_path, method: "delete" %>
-	<% end %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
-    <%= yield %>
-  </body>
+  <%= yield %>
+</body>
 </html>
