@@ -1,7 +1,8 @@
 <h1>Competitions</h1>
 <ul>
 	<% @competitions.each do |competition| %>
-		<li><%= competition.id %> - <%= competition.date %>- <%= competition.title %></li>
+		<% liItem = "#{competition.id} - #{competition.eventDatetime} - #{competition.title}" %>
+		<li><%= link_to liItem, competition_path(competition)%></li>
 	<% end %>
 </ul>
 
