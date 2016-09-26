@@ -20,6 +20,7 @@
           <h4>Hello, <%= current_user.name %>!</h4>
           <%= link_to "My profile", "/users/profile" %><br>
           <%= link_to "Log out", "/users/sign_out", :method => :delete %><br>
+          <button><%= link_to "Go to list of competitions", competitions_path %></button><br>
 
           <% if current_user.role == 'admin' %>
             <%= link_to "All profiles", "/users" %><br>

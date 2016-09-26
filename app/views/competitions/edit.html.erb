@@ -1,0 +1,12 @@
+<h1>Edit Competition</h1>
+
+<%= form_for @competition do |f| %>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+	<br>
+	<%= f.label "When the competition will be held: " %>
+	<% @competition.eventDatetime = Date.current.in_time_zone if @competition.eventDatetime == nil %>
+	<%= f.datetime_field :eventDatetime %>
+	<br>
+	<%= f.button %>
+<% end %>

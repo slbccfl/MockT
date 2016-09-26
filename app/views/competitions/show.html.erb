@@ -5,4 +5,5 @@
 
 <h3><%= @competition.eventDatetime  %></h3>
 
-<button><%= link_to "Return to list of competitions", competition_path</button>
+<button><%= link_to "Update this competition", edit_competition_path(@competition) %></button>
+<button><%= link_to "Delete this competition", competition_path(@competition), method: :delete  %></button>
