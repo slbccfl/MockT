@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def redirect_if_not_logged_in
-		if @current_user = nil 
+		if @current_user == nil 
 			flash[:message] = "You need to login to visit that page."
 			redirect_to '/login'
 		end
