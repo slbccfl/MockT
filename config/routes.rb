@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 	root 'site#home' 
 	devise_for :users
-	resources :competitions
+	resources :competitions do
+		resources :competition_rounds
+	end
 	# get '/sign_up' => 'users#new'
 	# post '/users' => 'users#create'
 	# get '/profile' => 'users#show'
