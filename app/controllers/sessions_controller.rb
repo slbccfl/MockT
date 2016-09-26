@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-	before_action :user_setup, only [:new, :home, :index, :show]
+	before_action :user_setup, only: [:new, :home, :index, :show]
 	before_action :redirect_if_already_logged_in, only: [:new]
 	before_action :redirect_if_not_logged_in, only: [:show]
 
