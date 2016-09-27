@@ -5,15 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Competition.create(
+local_competition = Competition.create!(
 	title: 'Local Mock Trail Competition', 
 	eventDatetime: DateTime.new(2016,10,22),
 )
-Competition.create(
+regional_competition = Competition.create!(
 	title: 'Regional Mock Trail Competition', 
 	eventDatetime: DateTime.new(2016,11,07),
 )
-Competition.create(
+national_competition = Competition.create!(
 	title: 'National Mock Trail Competition', 
 	eventDatetime: DateTime.new(2017,02,03),
 )
+[local_competition, regional_competition, national_competition].each do |competition|
+	4.times do |i|
+		competition.competition_rounds << CompetitionRound.new(number: i+1)
+	end
+end
+

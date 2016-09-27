@@ -18,7 +18,7 @@
       </div><!-- close columns -->
       <div class="col-sm-3">
         <% if current_user %>
-          <h4>Hello, <%= current_user.name %>!</h4>
+          <h4>Hello, <%= current_user.email %>!</h4>
           <%= link_to "My profile", "/users/edit" %><br>
           <%= link_to "Log out", "/users/sign_out", :method => :delete %><br>
           <button><%= link_to "Go to list of competitions", competitions_path %></button><br>
