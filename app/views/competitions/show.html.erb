@@ -5,9 +5,10 @@
 
 <h3><%= @competition.eventDatetime  %></h3>
 
+<h3>Competition Rounds:</h3>
 <ol>
 <% @competition.competition_rounds.each do |round| %>
-	<li><%= "Round: ${round}" %></li>
+	<li><%= "Round: #{round.number}" %></li>
 <% end %>
 </ol>
 
@@ -22,5 +23,5 @@
 <% disable = "" %>
 <% disable = "disabled" if @competition.competition_rounds.count == 0 %>
 	
-<button <%= disable %>><%= link_to "Remove a Round from this competition", competition_competition_round_path(@competition, id: @competition.competition_rounds), method: :delete  %></button>
+<button <%= disable %>><%= link_to "Remove a Round from this competition", competition_competition_round_path(@competition, id: @competition.competition_rounds.last), method: :delete  %></button>
 <br>

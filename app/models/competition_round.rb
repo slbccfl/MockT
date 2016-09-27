@@ -1,3 +1,3 @@
 class CompetitionRound < ApplicationRecord
-	belongs_to :competitions
+	belongs_to :competition
 end

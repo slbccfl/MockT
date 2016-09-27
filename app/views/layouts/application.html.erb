@@ -12,13 +12,14 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-sm-10">
-        <h1>MockT - Mock Trail Competition Archives</h1>
+      <div class="col-sm-9">
+        <h1>MockT</h1>
+        <h2>Mock Trail Competition Archives</h2>
       </div><!-- close columns -->
-      <div class="col-sm-2">
+      <div class="col-sm-3">
         <% if current_user %>
           <h4>Hello, <%= current_user.name %>!</h4>
-          <%= link_to "My profile", "/users/profile" %><br>
+          <%= link_to "My profile", "/users/edit" %><br>
           <%= link_to "Log out", "/users/sign_out", :method => :delete %><br>
           <button><%= link_to "Go to list of competitions", competitions_path %></button><br>
 

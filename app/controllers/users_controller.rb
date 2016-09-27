@@ -8,8 +8,17 @@ class UsersController < ApplicationController
 	@name = @current_user ? @current_user.username : "Not Logged In"
 	end
 
-	def profile
+	def edit
 	end
+
+	def update
+		user = User.update(user_params)
+		if user.save
+		  redirect_to '/'
+		else
+		  render status: 404, json: { error: "User #{params[:id]} was not found" }
+		end
+	end	
 
 	def index
 		@users = User.all
@@ -34,7 +43,7 @@ class UsersController < ApplicationController
 
 	def user_parms
 		params.require(:user).permit(
-			:username, :email,
+			:name, :email,
 			:password, :password_confirmation)
 	end
 end
