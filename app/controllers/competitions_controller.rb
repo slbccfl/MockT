@@ -13,7 +13,7 @@ class CompetitionsController < ApplicationController
 		)
 
 		if competition.save
-			redirect_to "/competitions/#{competition.id}"
+			redirect_to competition_path(competition)
 		else
 			@competition = competition
 

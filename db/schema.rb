@@ -17,16 +17,9 @@ ActiveRecord::Schema.define(version: 20160927163051) do
 
   create_table "ballots", force: :cascade do |t|
     t.integer  "judge_id"
-    t.integer  "competition_round_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
-  create_table "competition_rounds", force: :cascade do |t|
-    t.string   "number"
-    t.integer  "competition_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "round_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "competitions", force: :cascade do |t|
@@ -34,6 +27,13 @@ ActiveRecord::Schema.define(version: 20160927163051) do
     t.datetime "eventDatetime"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.string   "number"
+    t.integer  "competition_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|

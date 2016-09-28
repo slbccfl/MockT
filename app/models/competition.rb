@@ -1,3 +1,3 @@
 class Competition < ApplicationRecord
-	has_many :competition_rounds, :dependent => :destroy
+	has_many :rounds, :dependent => :destroy
 end

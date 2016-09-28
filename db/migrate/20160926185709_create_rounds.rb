@@ -1,6 +1,6 @@
-class CreateCompetitionRounds < ActiveRecord::Migration[5.0]
+class CreateRounds < ActiveRecord::Migration[5.0]
   def change
-    create_table :competition_rounds do |t|
+    create_table :rounds do |t|
       t.string :number
       t.integer :competition_id
 

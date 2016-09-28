@@ -1,2 +1,0 @@
-module CompetitionRoundsHelper
-end

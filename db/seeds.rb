@@ -19,7 +19,7 @@ national_competition = Competition.create!(
 )
 [local_competition, regional_competition, national_competition].each do |competition|
 	4.times do |i|
-		competition.competition_rounds << CompetitionRound.new(number: i+1)
+		competition.rounds << Round.new(number: i+1)
 	end
 end
 

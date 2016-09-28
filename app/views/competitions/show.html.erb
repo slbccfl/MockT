@@ -7,8 +7,8 @@
 
 <h3>Competition Rounds:</h3>
 <ol>
-<% @competition.competition_rounds.each do |round| %>
-	<li><%= "Round: #{round.number}" %></li>
+<% @competition.rounds.each do |round| %>
+	<li><%= link_to "Round: #{round.number}", competition_round_path(@competition, round) %></li>
 <% end %>
 </ol>
 
@@ -16,10 +16,12 @@
 <button><%= link_to "Update this competition", edit_competition_path(@competition) %></button>
 <button><%= link_to "Delete this competition", competition_path(@competition), method: :delete  %></button>
 <br>
-<form method="post" action="/competitions/<%= @competition.id %>/competition_rounds">
+<form method="post" action="/competitions/<%= @competition.id %>/rounds">
 	<button type="submit">Add a Round to this competition</button>	
 	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 </form>
 
-<button ><%= link_to "Remove a Round from this competition", competition_competition_round_path(@competition, id: @competition.competition_rounds.last), method: :delete  %></button>
-<br>
+<% if @competition.rounds.count > 0 %>
+	<button ><%= link_to "Remove a Round from this competition", competition_round_path(@competition, id: @competition.rounds.last), method: :delete  %></button>
+	<br>
+<% end %>

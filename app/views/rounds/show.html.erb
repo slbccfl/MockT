@@ -1,0 +1,13 @@
+<h2>Ballots in Round <%= @round.number %></h2>
+
+<ul>
+<% @round_ballots.each do |ballot| %>
+	<li><%= link_to "Ballot for judge #{ballot.judge_id} ", ballot_path(ballot.id) %></li>
+<% end %>
+</ol>
+
+<button><%= link_to "Return to List of Rounds for this Competition" , competition_path(@competition) %></button>
+<form method="post" action="/competitions/<%= @competition.id %>/rounds/<%= @round.id %>/ballots">
+	<button type="submit">Add a Ballot to this Competition Round</button>	
+	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+</form>

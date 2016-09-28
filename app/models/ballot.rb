@@ -1,3 +1,3 @@
 class Ballot < ApplicationRecord
-	belongs_to :competition_round
+	belongs_to :round
 end
