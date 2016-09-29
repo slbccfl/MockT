@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Bootstrap Case</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet"
+		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="NewBallot.css">
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script
+		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src='NewBallot.js'></script>
+</head>
+<body>
+	<div class='container'>
+		<header class='row text-center jumbotron themecolor'>
+			<h1>{competitionName}</h1>
+			<h2>{institutionName} on {competitionDate}</h2>
+			<h3>Round {roundNumber} - Ballot {ballotNumber}</h3>
+		</header>
+		<div class='row border'>
+			<div class = 'col-sm-6'>
+				<div class= 'row text-center'>
+					<h2>Plantiff / Prosecution</h2>
+				</div>
+			</div>
+			<div class = 'col-sm-6'>
+				<div class= 'row text-center border-left'> 
+					<h2>Defense</h2>
+				</div>
+			</div>
+		</div>
+		<div id = 'js-ballot-content' class='row width=100%'>
+
+		</div>
+		<footer class="row text-right small themecolor">
+		<p>
+			Property of Inadvisable Software 2016<br>Sometimes you just have
+			to say "Sure, I'll try that"<br>Especially if someone dares
+			you...<br>... We dare you to think about your software that
+			way...
+		</p>
+	</footer>
+
+	</div>
+</body>
+</html>
