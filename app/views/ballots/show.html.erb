@@ -1,5 +1,56 @@
-<h2>Ballots Page Placeholder</h2>
-
-<h2>Coming Soon!!! - Awesome Ballot Page</h2>
-
-<p>Ballot ID# <%= @ballot.id %></p>
+<div class='container-fluid'>
+	<header class='row text-center jumbotron themecolor'>
+		<h1><%= @competition.title %></h1>
+		<h2>{institutionName} on <%= @competition.eventDatetime.strftime("%F") %></h2>
+		<h3>Round <%= @round.number %> - Ballot for Judge <%= @ballot.judge_id %></h3>
+	</header>
+	<% if @phases.count == 0 %>
+		<h2>No ballot phases have been defined</h2>
+	<% end %>
+	<% @phases.each do |phase| %>
+		<div class = 'row border'>
+			<div class = 'col-sm-6 border-right'>
+				<h2><%= phase.pTitle %></h2>
+				<div class = 'col-sm-8 text-right'>
+					<p><%= phase.pScore1 %>:  </p>
+				</div><!-- close score label column -->
+				<div class = 'col-sw-4'>
+					<p>{score}</p>
+				</div><!-- close score column -->
+				<div class = 'col-sm-8 text-right'>
+					<p><%= phase.pScore2 %>:  </p>
+				</div><!-- close score label column -->
+				<div class = 'col-sw-4'>
+					<p>{score}</p>
+				</div><!-- close score column -->
+				<div class = 'col-sm-8 text-right'>
+					<p><%= phase.pScore3 %>:  </p>
+				</div><!-- close score label column -->
+				<div class = 'col-sw-4'>
+					<p>{score}</p>
+				</div><!-- close score column -->
+			</div><!-- close ballot cell -->
+			<div class = 'col-sm-6 border-left'>
+				<h2><%= phase.dTitle %>:  </h2>
+				<div class = 'col-sm-8 text-right'>
+					<p><%= phase.dScore1 %>:  </p>
+				</div><!-- close score label column -->
+				<div class = 'col-sw-4'>
+					<p>{score}</p>
+				</div><!-- close score column -->
+				<div class = 'col-sm-8 text-right'>
+					<p><%= phase.dScore2 %>:  </p>
+				</div><!-- close score label column -->
+				<div class = 'col-sw-4'>
+					<p>{score}</p>
+				</div><!-- close score column -->
+				<div class = 'col-sm-8 text-right'>
+					<p><%= phase.dScore3 %>:  </p>
+				</div><!-- close score label column -->
+				<div class = 'col-sw-4'>
+					<p>{score}</p>
+				</div><!-- close score column -->
+			</div><!-- close ballot cell -->
+		</div><!-- close phase row -->
+	<% end %><!-- close phases loop -->
+</div> <!-- close ballot container -->

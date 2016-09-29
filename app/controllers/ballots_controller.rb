@@ -17,6 +17,9 @@ class BallotsController < ApplicationController
 	end
 
 	def show
-		@ballot = Ballot.find_by(id: params[:id])	
+		@ballot = Ballot.find_by(id: params[:id])
+		@round = Round.find_by(id: @ballot.round_id)
+		@competition = Competition.find_by(id: @round.competition_id)	
+		@phases = Phase.where(competition_id: @round.competition_id)
 	end
 end

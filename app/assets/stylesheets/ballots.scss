@@ -1,3 +1,40 @@
 // Place all the styles related to the ballots controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+margin: 0;
+padding: 0;
+}
+
+.border {
+	border-style: solid;
+	border-width: 2px;
+}
+
+.border-right {
+	border-right-style: solid;
+	border-right-width: 2px;
+}
+
+.border-left {
+	border-left-style: solid;
+	border-left-width: 2px;
+}
+
+.themecolor {
+	background-color: #B2B2CC;
+}
+
+.themecolor-light {
+	background-color: #DCDCE0;
+}
+
+.jumbotron {
+	margin: 0;
+	right: 0;
+	padding-top: 10px;
+	width: 100%;
+}
+.sticky {
+	position: relative;
+}
