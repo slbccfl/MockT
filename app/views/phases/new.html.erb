@@ -1,0 +1,32 @@
+<h1> Competition Phase for <%= @competition.title %></h1>
+
+<%= form_for [@competition, @phase] do |f| %>
+	<%= f.label :order %>
+	<%= f.number_field :order %>
+	<br>
+	<%= f.label :pTitle %>
+	<%= f.text_field :pTitle %>
+	<br>
+	<%= f.label :pScore1 %>
+	<%= f.text_field :pScore1 %>
+	<br>
+	<%= f.label :pScore2 %>
+	<%= f.text_field :pScore2 %>
+	<br>
+	<%= f.label :pScore3 %>
+	<%= f.text_field :pScore3 %>
+	<br>
+	<%= f.label :dTitle %>
+	<%= f.text_field :dTitle %>
+	<br>
+	<%= f.label :dScore1 %>
+	<%= f.text_field :dScore1 %>
+	<br>
+	<%= f.label :dScore2 %>
+	<%= f.text_field :dScore2 %>
+	<br>
+	<%= f.label :dScore3 %>
+	<%= f.text_field :dScore3 %>
+	<br>
+	<%= f.button %>
+<% end %>

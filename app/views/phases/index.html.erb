@@ -1,0 +1,12 @@
+<h1>Competition Phases</h1>
+<ul>
+	<% @phases.each do |phase| %>
+		<% li_item = "#{phase.order}. #{phase.pTitle} - #{phase.dTitle}" %>
+		<li><%= link_to li_item, edit_competition_phase_path(@competition, phase)%></li>
+	<% end %>
+</ul>
+
+<button><%= link_to "Add a phase to this competition", new_competition_phase_path %></button>
+
+
+	

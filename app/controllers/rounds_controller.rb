@@ -1,6 +1,6 @@
 class RoundsController < ApplicationController
 	def create
-		puts 'create action found in competition_rounds_controller.rb'
+		puts 'create action found in rounds_controller.rb'
 		competition = Competition.find_by(id: params[:competition_id])
 		round = Round.new()
 		competition.rounds.push(round)

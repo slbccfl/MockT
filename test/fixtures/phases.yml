@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  competition_id: 1
+  pTitle: MyString
+  pScore1: MyString
+  pScore2: MyString
+  pScore3: MyString
+  dTitle: MyString
+  dScore1: MyString
+  dScore2: MyString
+  dScore3: MyString
+
+two:
+  competition_id: 1
+  pTitle: MyString
+  pScore1: MyString
+  pScore2: MyString
+  pScore3: MyString
+  dTitle: MyString
+  dScore1: MyString
+  dScore2: MyString
+  dScore3: MyString

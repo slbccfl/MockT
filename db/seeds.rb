@@ -23,3 +23,94 @@ national_competition = Competition.create!(
 	end
 end
 
+competition = Competition.first
+phase_data = []
+phase_data[1] = competition.phases.create!(
+	order: 1,
+	pTitle: 'Opening Statements',
+	pScore1: 'Attorney',
+	pScore2: '',
+	pScore3: '',
+	dTitle: 'Opening Statements',
+	dScore1: 'Attorney',
+	dScore2: '',
+	dScore3: '',
+	)
+phase_data[2] = competition.phases.create!(
+	order: 2,
+	pTitle: 'Plantiff Witness 1',
+	pScore1: 'Attorney',
+	pScore2: 'Witness',
+	pScore3: 'Argument',
+	dTitle: 'Plantiff Witness 1 Cross',
+	dScore1: 'Attorney',
+	dScore2: 'Witness',
+	dScore3: '',
+	)
+phase_data[3] = competition.phases.create!(
+	order: 3,
+	pTitle: 'Plantiff Witness 2',
+	pScore1: 'Attorney',
+	pScore2: 'Witness',
+	pScore3: 'Argument',
+	dTitle: 'Plantiff Witness 2 Cross',
+	dScore1: 'Attorney',
+	dScore2: 'Witness',
+	dScore3: '',
+	)
+phase_data[4] = competition.phases.create!(
+	order: 4,
+	pTitle: 'Plantiff Witness 3',
+	pScore1: 'Attorney',
+	pScore2: 'Witness',
+	pScore3: 'Argument',
+	dTitle: 'Plantiff Witness 3 Cross',
+	dScore1: 'Attorney',
+	dScore2: 'Witness',
+	dScore3: '',
+	)
+phase_data[5] = competition.phases.create!(
+	order: 5,
+	pTitle: 'Defense Witness 1',
+	pScore1: 'Attorney',
+	pScore2: 'Witness',
+	pScore3: '',
+	dTitle: 'Defense Witness 1 Cross',
+	dScore1: 'Attorney',
+	dScore2: 'Witness',
+	dScore3: 'Argument',
+	)
+phase_data[6] = competition.phases.create!(
+	order: 6,
+	pTitle: 'Defense Witness 2',
+	pScore1: 'Attorney',
+	pScore2: 'Witness',
+	pScore3: '',
+	dTitle: 'Defense Witness 2 Cross',
+	dScore1: 'Attorney',
+	dScore2: 'Witness',
+	dScore3: 'Argument',
+	)
+phase_data[7] = competition.phases.create!(
+	order: 7,
+	pTitle: 'Defense Witness 3',
+	pScore1: 'Attorney',
+	pScore2: 'Witness',
+	pScore3: '',
+	dTitle: 'Defense Witness 3 Cross',
+	dScore1: 'Attorney',
+	dScore2: 'Witness',
+	dScore3: 'Argument',
+	)
+phase_data[8] = competition.phases.create!(
+	order: 8,
+	pTitle: 'Closing Statements',
+	pScore1: 'Attorney',
+	pScore2: '',
+	pScore3: '',
+	dTitle: 'Closing Statements',
+	dScore1: 'Attorney',
+	dScore2: '',
+	dScore3: '',
+	)
+

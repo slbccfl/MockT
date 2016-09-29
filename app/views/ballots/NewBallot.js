@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var arguementNames = ["Opening Statements",
+  var phaseNames = ["Opening Statements",
       "P Witness 1", 
       "P Witness 2", 
       "P Witness 3", 
@@ -11,11 +11,11 @@ $(document).ready(function() {
   var pSideArguementHTML = "";
   var dSideArguementHTML = "";
   var ballotHTML = "";
-  for (i = 0; i < arguementNames.length; i++) {
-    arguementType = arguementNames[i].substr(0,1)
+  for (i = 0; i < phaseNames.length; i++) {
+    arguementType = phaseNames[i].substr(0,1)
     if (arguementType  == "O"||arguementType  == "C") {	
       ballotHTML += '<div class = "row border text-center themecolor">'
-        ballotHTML += '<h3>' + arguementNames[i] + '</h3>'
+        ballotHTML += '<h3>' + phaseNames[i] + '</h3>'
         ballotHTML += '<div class = "row border themecolor-light">'
           ballotHTML += '<div class="col-sm-4">'
             ballotHTML += '<p>Attorney {teamMemberName}</p>'
@@ -33,7 +33,7 @@ $(document).ready(function() {
       ballotHTML += '</div>' // close row --!>
     } else {
       ballotHTML += '<div class = "row border text-center themecolor">'
-        ballotHTML += '<h3>' + arguementNames[i] + '</h3>'
+        ballotHTML += '<h3>' + phaseNames[i] + '</h3>'
         ballotHTML += '<div class = "row border themecolor-light">'
           ballotHTML += '<div class="col-sm-4">'
             ballotHTML += '<p>Attorney {teamMemberName}</p>'
