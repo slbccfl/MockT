@@ -23,7 +23,7 @@ national_competition = Competition.create!(
 	end
 end
 
-competition = Competition.first
+competition = Competition.last
 phase_data = []
 phase_data[1] = competition.phases.create!(
 	order: 1,
