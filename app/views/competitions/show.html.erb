@@ -8,7 +8,9 @@
 <h3>Competition Rounds:</h3>
 <ol>
 <% @competition.rounds.each do |round| %>
-	<li><%= link_to "Round: #{round.number}", competition_round_path(@competition, round) %></li>
+	<li>
+		<%= link_to "Round: #{round.number}", competition_round_path(@competition, round) %>
+	</li>
 <% end %>
 </ol>
 

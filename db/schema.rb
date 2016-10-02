@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929165853) do
+ActiveRecord::Schema.define(version: 20161001222841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,11 +22,32 @@ ActiveRecord::Schema.define(version: 20160929165853) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cases", force: :cascade do |t|
+    t.string   "caseName"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "competitions", force: :cascade do |t|
     t.string   "title"
     t.datetime "eventDatetime"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "institution_id"
+    t.integer  "case_id"
+  end
+
+  create_table "institutions", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "judges", force: :cascade do |t|
+    t.string   "firstName"
+    t.string   "lastName"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "phases", force: :cascade do |t|
@@ -47,6 +68,27 @@ ActiveRecord::Schema.define(version: 20160929165853) do
   create_table "rounds", force: :cascade do |t|
     t.string   "number"
     t.integer  "competition_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "team_assignments", force: :cascade do |t|
+    t.integer  "team_member_id"
+    t.integer  "team_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "team_members", force: :cascade do |t|
+    t.string   "firstName"
+    t.string   "lastName"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "institution_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

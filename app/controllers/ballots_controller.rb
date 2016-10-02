@@ -9,6 +9,15 @@ class BallotsController < ApplicationController
 		ballot = Ballot.new()
 		round.ballots.push(ballot)
 
+		judge = Judge.new()
+		ballot.judges.push(judge)
+		judge.firstName = params[:judge_first_name]
+		judge.lastName = params[:judge_last_name]
+
+		if judge.save == false
+			render status: 404, json: { error: "Count not create #{params[:id]} judge" }
+		end
+
 		if ballot.save
 			redirect_to competition_round_path(round.competition_id, params[:round_id])
 		else

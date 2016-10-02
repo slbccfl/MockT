@@ -1,0 +1,13 @@
+<h1>Team Member Edit</h1>
+
+<%= form_for [@team] do |f| %>
+   <%= f.label "First Name: " %>
+   <%= f.text_field :firstName %>
+   <br>
+   <%= f.label "Last Name: " %>
+   <%= f.text_field :lastName %>
+   <br>
+   <br>
+   <%= f.button %>
+<% end %>
+

@@ -6,7 +6,7 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
 </head>
 
 <body>
@@ -22,7 +22,7 @@
           <%= link_to "My profile", "/users/edit" %><br>
           <%= link_to "Log out", "/users/sign_out", :method => :delete %><br>
           <button><%= link_to "Go to list of competitions", competitions_path %></button><br>
-
+          <button><%= link_to "Go to list of teams", teams_path %></button><br>
           <% if current_user.role == 'admin' %>
             <%= link_to "All profiles", "/users" %><br>
           <% end %>

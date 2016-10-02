@@ -5,16 +5,32 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Case.create!(caseName: "This Year's Case")
+
+Institution.create!(name: 'Cedar Rapids High School')
+Institution.create!(name: 'Linn Mar High School')
+Institution.create!(name: 'West High School')
+Institution.create!(name: 'Northern University')
+Institution.create!(name: 'Western University')
+Institution.create!(name: 'Southern University')
+Institution.create!(name: 'Eastern University')
+
 local_competition = Competition.create!(
 	title: 'Local Mock Trail Competition', 
+	institution_id: 1,
+	case_id: 1,
 	eventDatetime: DateTime.new(2016,10,22),
 )
 regional_competition = Competition.create!(
 	title: 'Regional Mock Trail Competition', 
+	institution_id: 5,
+	case_id: 1,
 	eventDatetime: DateTime.new(2016,11,07),
 )
 national_competition = Competition.create!(
 	title: 'National Mock Trail Competition', 
+	institution_id: 6,
+	case_id: 1,
 	eventDatetime: DateTime.new(2017,02,03),
 )
 [local_competition, regional_competition, national_competition].each do |competition|
