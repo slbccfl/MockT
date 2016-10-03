@@ -14,6 +14,64 @@
  *= require_self
  */
 
-.mockt-heading-nav {
-	background-image: url('../images/mockt-header-img.jpg');
+.mockt-heading-background {
+	position: absolute;
+	height: 25vh;
+	width: 100%;
+	background-image: url('mockt-header-img.jpg');
+	background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+}
+.mockt-heading {
+	height: 25vh;
+	top: 0;
+	left: 0;
+}
+.homepage-container{
+	width: 100%;
+	height: 75vh;
+	background-size: 100%, 100%;
+	 /*Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e6ecfc+0,769dfa+19,b6c9f6+50,769dfa+77,a6bdf4+100,c1d1f7+100 */
+	background: #e6ecfc;  Old browsers 
+	background: -moz-linear-gradient(top,  #e6ecfc 0%, #769dfa 19%, #b6c9f6 50%, #769dfa 77%, #a6bdf4 100%, #c1d1f7 100%);  FF3.6-15 
+	background: -webkit-linear-gradient(top,  #e6ecfc 0%,#769dfa 19%,#b6c9f6 50%,#769dfa 77%,#a6bdf4 100%,#c1d1f7 100%);  Chrome10-25,Safari5.1-6 
+	background: linear-gradient(to bottom right,  #e6ecfc 0%,#769dfa 19%,#b6c9f6 50%,#769dfa 77%,#a6bdf4 100%,#c1d1f7 100%);  W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6ecfc', endColorstr='#c1d1f7',GradientType=0 ); /* IE6-9 */
+
+}
+.mockt-page {
+	width: 100%;
+	height: 75vh;
+	background-size: 100%, 100%;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e6ecfc+0,769dfa+19,b6c9f6+50,769dfa+77,a6bdf4+100,c1d1f7+100 */
+	background: #e6ecfc; /* Old browsers */
+	background: -moz-linear-gradient(top,  #e6ecfc 0%, #769dfa 19%, #b6c9f6 50%, #769dfa 77%, #a6bdf4 100%, #c1d1f7 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  #e6ecfc 0%,#769dfa 19%,#b6c9f6 50%,#769dfa 77%,#a6bdf4 100%,#c1d1f7 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom right,  #e6ecfc 0%,#769dfa 19%,#b6c9f6 50%,#769dfa 77%,#a6bdf4 100%,#c1d1f7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6ecfc', endColorstr='#c1d1f7',GradientType=0 ); /* IE6-9 */
+}
+.mockt-page-nav {
+	padding: 0px 100px 0px 100px;
+}
+.btn-primary {
+	color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+.mockt-heading-col {
+	padding: 15px;
+}
+.mockt-container {
+	width: 100%;
+	height: 100%;
+
+}
+.list-group-item {
+	padding: 3px;
+}
+
+small {
+	color: black;
 }

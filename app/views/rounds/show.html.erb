@@ -1,3 +1,8 @@
+<div class = "row mockt-page-nav">
+   <button class="btn btn-secondary"><%= link_to "Return to List of Rounds for this Competition" , competition_path(@competition) %></button>
+   <button class="btn btn-secondary"><%= link_to "Add a Ballot to this Competition Round" , new_competition_round_ballot_path(@competition, @round) %></button>
+</div>
+
 <div class="container">
    <h2>Ballots in Round <%= @round.number %></h2>
 
@@ -7,52 +12,4 @@
    <% end %>
    </ul>
 
-   <button class="btn btn-primary"><%= link_to "Return to List of Rounds for this Competition" , competition_path(@competition) %></button>
-   <form method="post" action="/competitions/<%= @competition.id %>/rounds/<%= @round.id %>/ballots">
-      <button type="submit">Add a Ballot to this Competition Round</button>   
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-   </form>
 </div
-
-<!-- <button class = "btn btn-primary" data-toggle = "modal" data-target = "#judgeModal">
-   Add a Ballot via Modal
-</button> -->
-
-<!-- Modal -->
-<div class = "modal fade" id = "judgeModal" tabindex = "-1" role = "dialog" 
-   aria-labelledby = "Round Judge" aria-hidden = "true">
-   
-   <div class = "modal-dialog">
-      <div class = "modal-content">
-         
-         <div class = "modal-header">
-            <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">
-                  &times;
-            </button>
-            
-            <h4 class = "modal-title" id = "Round Judge">
-               Name of Judge Assigned to Round
-            </h4>
-         </div>
-         
-         <div class = "modal-body">
-            <form method="post" action="/competitions/<%= @competition.id %>/rounds/<%= @round.id %>/ballots">
-               First Name: <input type= "text" name= "judge_first_name"><br>
-               Last Name: <input type= "text" name= "judge_last_name"><br>
-               <button type="submit">Add a Ballot to this Competition Round</button>   
-               <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-            </form>
-         </div>
-         
-         <div class = "modal-footer">
-            <button type = "button" class = "btn btn-default" data-dismiss = "modal">
-               Close
-            </button>
-            
-
-         </div>
-         
-      </div><!-- /.modal-content -->
-   </div><!-- /.modal-dialog -->
-  
-</div><!-- /.modal -->

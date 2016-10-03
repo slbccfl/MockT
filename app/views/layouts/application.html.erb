@@ -10,13 +10,16 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="row mockt-heading-row">
+  <div class="container mockt-heading-background">
+  </div>
+  <div class="container mockt-heading">
+    <div class="row">
       <div class="row">
-        <div class="col-sm-9">
-          <h1>MockT  <small>Mock Trail Competition Archives</small></h1>
+        <div class="col-sm-9 mockt-heading-col">
+          <h1>MockT</h1>
+          <h2>Mock Trail Competition Archives</h2>
         </div><!-- close columns -->
-        <div class="col-sm-3">
+        <div class="col-sm-3 mockt-heading-col">
           <div class="btn-group" role="group" aria-label="Heading Nav">
             <% if current_user %>
               <h4>Welcome, <%= current_user.email %>!</h4>
@@ -28,16 +31,16 @@
       </div><!-- close row -->
     </div><!-- close row -->
     <div class="row mockt-heading-nav"> 
-      <div class="col-sm-9">
+      <div class="col-sm-9 mockt-heading-col">
         <div class="btn-group" role="group" aria-label="Heading Nav">
           <% if current_user %>
             <button class="btn btn-secondary"><%= link_to "Competitions", competitions_path %></button>
             <button class="btn btn-secondary"><%= link_to "Teams", teams_path %></button>
-            <button class="btn btn-secondary"><%= link_to "Teams Members", team_members_path %></button>
+            <button class="btn btn-secondary"><%= link_to "Team Members", team_members_path %></button>
           <% end %>
         </div><!-- close btn-group -->
       </div><!-- close columns -->
-      <div class="col-sm-3">
+      <div class="col-sm-3 mockt-heading-col">
           <div class="btn-group" role="group" aria-label="Heading Nav">
             <% if current_user %>
               <button class="btn btn-secondary"><%= link_to "Profile", "/users/edit" %></button>
@@ -53,12 +56,13 @@
       </div><!-- close columns -->
     </div><!-- close row -->
   </div><!-- close container-->
-
+  
+  <div class = "container-fluid mockt-page">
+    <%= yield %>
+  </div>
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
-  <%= yield %>
-  </div>
 </body>
 </html>

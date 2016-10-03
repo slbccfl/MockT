@@ -1,3 +1,19 @@
+<div class = "row mockt-page-nav">
+	<button class="btn btn-secondary"><%= link_to "Cancel", competitions_path %></button>
+	<button class="btn btn-secondary"><%= link_to "Edit", edit_competition_path(@competition) %></button>
+	<button class="btn btn-secondary"><%= link_to "Delete Competition", competition_path(@competition), method: :delete  %></button>
+	<button class="btn btn-secondary"><%= link_to "Define Ballot", competition_phases_path(@competition)%></button>
+	<form class = "btn btn-secondary" method="post" action="/competitions/<%= @competition.id %>/rounds">
+		<button class="btn btn-secondary" type="submit">Add</button>	
+		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+	</form>
+
+	<% if @competition.rounds.count > 0 %>
+		<button class="btn btn-secondary"><%= link_to "Delete Round", competition_round_path(@competition, id: @competition.rounds.last), method: :delete  %></button>
+		<br>
+	<% end %>
+</div>
+
 <div class="container">
 	<h1>Competition Details</h1>
 
@@ -15,19 +31,4 @@
 	<% end %>
 	</ol>
 
-	<button class="btn btn-primary"><%= link_to "Return to list of competitions", competitions_path %></button>
-	<button class="btn btn-primary"><%= link_to "Update this competition", edit_competition_path(@competition) %></button>
-	<button class="btn btn-primary"><%= link_to "Delete this competition", competition_path(@competition), method: :delete  %></button>
-	<br>
-	<button class="btn btn-primary"><%= link_to "Define the Ballot for this competition", competition_phases_path(@competition)%></button>
-	<br>
-	<form method="post" action="/competitions/<%= @competition.id %>/rounds">
-		<button type="submit">Add a Round to this competition</button>	
-		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-	</form>
-
-	<% if @competition.rounds.count > 0 %>
-		<button class="btn btn-primary"><%= link_to "Remove a Round from this competition", competition_round_path(@competition, id: @competition.rounds.last), method: :delete  %></button>
-		<br>
-	<% end %>
 </div>

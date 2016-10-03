@@ -1,14 +1,18 @@
-<div class="container">
-	<h2> New Ballot for Round <%= @round.number %> %></h2>
+<div class = "row mockt-page-nav">
+</div>
 
-	<%= form_for @ballot do |f| %>
-		<%= f.label :judge_id %>
-		<%= f.text_field :judge_id %>
-		<br>
-		<p><%= @round %></p>
+<div class="container">
+	<h2> New Ballot for Round <%= @round.number %></h2>
+
+	<%= form_for @ballot, url: competition_round_ballots_path(@competition ,@round) do |f| %>
+		<%= f.label "Judge Scoring the Ballot: " %>
+
+		<%= f.collection_select(:judge_id, @judges, :id, :lastName) %>
+
+		<%= hidden_field_tag :competition, @competition %>
 		<%= hidden_field_tag :round, @round %>
-	</form>
-		<h3> And so on the with ballot page </h3>
+		<br>
+		<br>
 		<%= f.button %>
 	<% end %>
 </div>

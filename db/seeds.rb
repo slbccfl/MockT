@@ -5,32 +5,51 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Case.create!(caseName: "This Year's Case")
+thisyearscase = Case.create!(caseName: "This Year's Case")
 
-Institution.create!(name: 'Cedar Rapids High School')
-Institution.create!(name: 'Linn Mar High School')
-Institution.create!(name: 'West High School')
-Institution.create!(name: 'Northern University')
-Institution.create!(name: 'Western University')
-Institution.create!(name: 'Southern University')
-Institution.create!(name: 'Eastern University')
+Judge.create!(firstName: 'George', lastName: 'Washington')
+Judge.create!(firstName: 'John', lastName: 'Adams')
+Judge.create!(firstName: 'Thomas', lastName: 'Jefferson')
+Judge.create!(firstName: 'James', lastName: 'Madison')
+
+instcrhs = Institution.create!(name: 'Cedar Rapids High School')
+instlmhs = Institution.create!(name: 'Linn Mar High School')
+instwhs = Institution.create!(name: 'West High School')
+instnu = Institution.create!(name: 'Northern University')
+instwu = Institution.create!(name: 'Western University')
+instsu = Institution.create!(name: 'Southern University')
+insteu = Institution.create!(name: 'Eastern University')
+
+teamdisney = instnu.teams.create!(name: "Team Disney")
+
+teamdisney.team_members.create!(firstName: 'Mickey', lastName: 'Mouse')
+teamdisney.team_members.create!(firstName: 'Donald J.', lastName: 'Duck')
+teamdisney.team_members.create!(firstName: 'Goofy', lastName: 'Dog')
+teamdisney.team_members.create!(firstName: 'Pluto', lastName: 'Dog (no relation)')
+
+teamwb = instsu.teams.create!(name: "Warner Brothers & Co.", institution_id: instsu.id)
+
+teamwb.team_members.create!(firstName: 'Bugs', lastName: 'Bunny')
+teamwb.team_members.create!(firstName: 'Elmer', lastName: 'Fudd')
+teamwb.team_members.create!(firstName: 'Daffy', lastName: 'Duck')
+teamwb.team_members.create!(firstName: 'Porky', lastName: 'Pig')
 
 local_competition = Competition.create!(
 	title: 'Local Mock Trail Competition', 
-	institution_id: 1,
-	case_id: 1,
+	institution_id: instcrhs.id,
+	case_id: thisyearscase.id,
 	eventDatetime: DateTime.new(2016,10,22),
 )
 regional_competition = Competition.create!(
 	title: 'Regional Mock Trail Competition', 
-	institution_id: 5,
-	case_id: 1,
+	institution_id: instsu.id,
+	case_id: thisyearscase.id,
 	eventDatetime: DateTime.new(2016,11,07),
 )
 national_competition = Competition.create!(
 	title: 'National Mock Trail Competition', 
-	institution_id: 6,
-	case_id: 1,
+	institution_id: instnu.id,
+	case_id: thisyearscase.id,
 	eventDatetime: DateTime.new(2017,02,03),
 )
 [local_competition, regional_competition, national_competition].each do |competition|
