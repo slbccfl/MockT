@@ -6,7 +6,7 @@ class TeamMembersController < ApplicationController
 		@team_member = TeamMember.find_by(id: params[:id])
 	end
 	def new
-		@team_member = Team.new
+		@team_member = TeamMember.new
 	end
 	def create
 		puts 'create action found in team_members_controller.rb'
@@ -16,7 +16,7 @@ class TeamMembersController < ApplicationController
 		)
 
 		if team_member.save
-			redirect_to team_team_assignments_path()
+			redirect_to team_members_path()
 		else
 			render status: 404, json: { error: "Could not create #{params[:id]} team_member" }
 		end

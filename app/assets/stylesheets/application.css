@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.mockt-heading-nav {
+	background-image: url('../images/mockt-header-img.jpg');
+}

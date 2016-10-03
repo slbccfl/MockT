@@ -1,0 +1,16 @@
+<div class="container">
+	<h1>Team Membership for Team <%= @team.name %></h1>
+	<ul class="list-group">
+		<% @team_members.each do |member| %>
+			<% li_item = "#{member.id}. #{member.lastName}, #{member.firstName}" %
+			<li class="list-group-item"><%= link_to li_item, edit_team_member_path(member)%></li>
+		<% end %>
+	</ul>
+
+	<button class="btn btn-primary">
+		<%= link_to "Add a Team Member to this Team", new_team_member_path %>
+	</button><br>
+	<button class="btn btn-primary">
+		<%= link_to "Add New Team Members", new_team_member_path %>
+	</button><br>
+</div>

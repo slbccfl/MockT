@@ -1,9 +1,11 @@
-<h1>Team Members</h1>
-<ul>
-	<% @team_members.each do |team_member| %>
-		<% li_item = "#{team_member.id}. #{team_member.lastName}, #{team_member.firstName}" %>
-		<li><%= link_to li_item, edit_team_member_path(team)%></li>
-	<% end %>
-</ul>
+<div class="container">
+	<h1>Team Members</h1>
+	<ul class="list-group">
+		<% @team_members.each do |team_member| %>
+			<% li_item = "#{team_member.id}. #{team_member.lastName}, #{team_member.firstName}" %>
+			<li class="list-group-item"><%= link_to li_item, edit_team_member_path(team_member)%></li>
+		<% end %>
+	</ul>
 
-<button><%= link_to "Add a New Team Member", new_team_member_path %></button><br>
+	<button class="btn btn-primary"><%= link_to "Add a New Team Member", new_team_member_path %></button><br>
+</div>

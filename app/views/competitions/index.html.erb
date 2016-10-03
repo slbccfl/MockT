@@ -1,11 +1,16 @@
-<h1>Competitions</h1>
-<ul>
-	<% @competitions.each do |competition| %>
-		<% li_item = "#{competition.id} - #{competition.eventDatetime} - #{competition.title}" %>
-		<li><%= link_to li_item, competition_path(competition)%></li>
-	<% end %>
-</ul>
+<div class = "container">
 
-<button><%= link_to "Create a new competition", new_competition_path %></button>
+	<h1>Competitions</h1>
+
+	<ul class="list-group">
+		<% @competitions.each do |competition| %>
+			<% li_item = "#{competition.id} - #{competition.eventDatetime} - #{competition.title}" %>
+			<li class="list-group-item"><%= link_to li_item, competition_path(competition)%></li>
+		<% end %>
+	</ul>
+
+	<button><%= link_to "Create a new competition", new_competition_path %></button>
+
+</div>
 
 	

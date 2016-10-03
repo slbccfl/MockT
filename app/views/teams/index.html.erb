@@ -1,10 +1,12 @@
-<h1>Mock Trial Teams</h1>
-<ul>
-	<% @teams.each do |team| %>
-		<% li_item = "#{team.id}. #{team.name}, #{team.institution.name}" %>
-		<li><%= link_to li_item, edit_team_path(team)%></li>
-	<% end %>
-</ul>
+<div class="container">
+	<h1>Mock Trial Teams</h1>
+	<ul>
+		<% @teams.each do |team| %>
+			<% li_item = "#{team.id}. #{team.name}, #{team.institution.name}" %>
+			<li class="list-group-item"><%= link_to li_item, edit_team_path(team)%></li>
+		<% end %>
+	</ul>
 
-<button><%= link_to "Add a New Team", new_team_path %></button><br>
-<button><%= link_to "Add New Team Members", new_team_member_path %></button><br>
+	<button class="btn btn-primary"><%= link_to "Add a New Team", new_team_path %></button><br>
+	<button class="btn btn-primary"><%= link_to "Add New Team Members", new_team_member_path %></button><br>
+</div>

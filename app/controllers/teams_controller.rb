@@ -28,4 +28,18 @@ class TeamsController < ApplicationController
 		@institutions = Institution.all
 		@team_assignments = TeamAssignment.where(team_id: params[:id])
 	end
+	def update
+		puts 'create action found in teams_controller.rb'
+		institution = Institution.find_by(id: params[:institution_id])
+		team = Team.find_by(id: params[:id])
+		if team.update(
+			:name => params[:team][:name],
+			:institution_id => params[:team][:institution_id]
+		)
+			redirect_to teams_path(team)
+		else
+			render edit
+		end
+	end
+
 end

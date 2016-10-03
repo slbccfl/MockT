@@ -1,16 +1,19 @@
-<h1>Team Edit</h1>
+<div class="container">
+   <h1>Team Edit</h1>
 
-<%= form_for [@team] do |f| %>
-   <%= f.label "Team Name: " %>
-   <%= f.text_field :name %>
-   <br>
-   <%= f.label "Institution Represented by the Team: " %>
-   <%= f.select (:institution_id) do %>
-      <% @institutions.each do |institution| %>
-         <%= content_tag(:option, institution.name, value: institution.id) %>
+   <%= form_for [@team] do |f| %>
+      <%= f.label "Team Name: " %>
+      <%= f.text_field :name %>
+      <br>
+      <%= f.label "Institution Represented by the Team: " %>
+
+      <%= f.select (:institution_id) do %>
+         <%= options_for_select(@institutions.collect { |institution| [institution.name, institution.id]}, @team.institution_id) %>
       <% end %>
+      <br>
+      <%= f.button %>
+      <button>
+         <%= link_to "Assign Team Members to a Team", team_team_assignments_path(@team) %>
+      </button>
    <% end %>
-   <br>
-   <%= f.button %>
-<% end %>
-
+</div>
