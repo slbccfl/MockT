@@ -1,0 +1,52 @@
+<%= form_tag(ballot_path(@ballot), method: :put) do %>
+<div class = "row mockt-page-nav">
+	<button class="btn btn-secondary"><%= link_to "Cancel", competition_round_path(@competition, @round) %></button>
+	<button class="btn btn-secondary">Save</button>
+</div>
+
+<div class='container-fluid mockt-ballot'>
+	<header class='row text-center themecolor'>
+		<h1><%= @competition.title %></h1>
+		<h2><%= @institution.name %> on <%= @competition.eventDatetime.strftime("%F") %></h2>
+		<h3>Round <%= @round.number %> - Ballot of Judge <%= @judge.lastName %></h3>
+		<div class = 'col-sm-6'>
+			<h2>Plantiff / Prosecution</h2>
+		</div>
+		<div class = 'col-sm-6'>
+			<h2>Defense</h2>
+		</div>
+	</header>
+	<% if @phases.count == 0 %>
+		<h2>No phases have been defined for this competition</h2>
+	<% end %>
+
+	<% @phases.each do |phase| %>
+		<div class = 'row border'>
+			<div class = 'col-sm-6 border-right'>
+				<h2><%= phase.pTitle %></h2>
+					<% 3.times do %>
+					<div class = 'col-sm-8 text-right'>
+						<%= select_tag("scores[][role_id]", options_from_collection_for_select(@roles, :id, :name), {prompt: ''}) %>
+					</div><!-- close score label column -->
+					<div class = 'col-sw-4'>
+						<input type="number" name="scores[][score]">
+						<input type="hidden" name="scores[][phase_id]" value="<%= phase.id %>">
+					</div><!-- close score column -->
+				<% end %>
+			</div>
+			<div class = 'col-sm-6 border-right'>
+				<h2><%= phase.dTitle %></h2>
+					<% 3.times do %>
+					<div class = 'col-sm-8 text-right'>
+						<%= select_tag("scores[][role_id]", options_from_collection_for_select(@roles, :id, :name), {prompt: ''}) %>
+					</div><!-- close score label column -->
+					<div class = 'col-sw-4'>
+						<input type="number" name="scores[][score]">
+						<input type="hidden" name="scores[][phase_id]" value="<%= phase.id %>">
+					</div><!-- close score column -->
+				<% end %>
+			</div><!-- close ballot cell -->
+		</div><!-- close phase row -->
+	<% end %><!-- close phases loop -->	
+</div> <!-- close ballot container -->
+<% end %>

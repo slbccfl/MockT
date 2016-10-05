@@ -27,6 +27,6 @@ class RoundsController < ApplicationController
 		@competition = Competition.find_by(id: params[:competition_id])
 		@round = Round.find_by(id: params[:id])
 		@round_ballots = Ballot.where(round_id: params[:id])
-		
+		@round_roles = Role.where(round_id: params[:id])
 	end
 end

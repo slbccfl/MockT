@@ -1,15 +1,32 @@
 <div class = "row mockt-page-nav">
-   <button class="btn btn-secondary"><%= link_to "Return to List of Rounds for this Competition" , competition_path(@competition) %></button>
-   <button class="btn btn-secondary"><%= link_to "Add a Ballot to this Competition Round" , new_competition_round_ballot_path(@competition, @round) %></button>
+   <button class="btn btn-secondary"><%= link_to "Cancel" , competition_path(@competition) %></button>
+   <button class="btn btn-secondary"><%= link_to "Add a Role" , new_competition_round_role_path(@competition, @round) %></button>
+   <button class="btn btn-secondary"><%= link_to "Add a Ballot" , new_competition_round_ballot_path(@competition, @round) %></button>
 </div>
 
-<div class="container">
-   <h2>Ballots in Round <%= @round.number %></h2>
+<div class="container"
+	<div class="row round-heading">
+	<h2>Round <%= @round.number %> of <%= @competition.title %></h2>
+	<div class="row mockt-round">
+		<div class = "col-sm-6">
+		   <h3>Role Assignments</h3>
 
-   <ul class="list-group">
-   <% @round_ballots.each do |ballot| %>
-   	<li class="list-group-item"><%= link_to "Ballot for judge #{ballot.judge_id} ", ballot_path(ballot.id) %></li>
-   <% end %>
-   </ul>
+		   <ul class="list-group">
+				<% @round_roles.each do |role| %>
+			   	<% team_member = TeamMember.find(role.team_member_id) %>
+			   	<li class="list-group-item"><%= link_to "#{role.name}: #{team_member.firstName} #{team_member.lastName} ", role_path(role.id) %></li>
+			   <% end %>
+		   </ul>
+		</div>
+		<div class = "col-sm-6">
+		   <h3>Ballot Assignments</h3>
 
+		   <ul class="list-group">
+			   <% @round_ballots.each do |ballot| %>
+			   	<% judge = Judge.find(ballot.judge_id) %>
+			   	<li class="list-group-item"><%= link_to "Ballot for Judge #{judge.lastName} ", edit_ballot_path(ballot.id) %></li>
+			   <% end %>
+		   </ul>
+	   </div>
+	</div>
 </div

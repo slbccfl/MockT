@@ -22,32 +22,34 @@ insteu = Institution.create!(name: 'Eastern University')
 
 teamdisney = instnu.teams.create!(name: "Team Disney")
 
-teamdisney.team_members.create!(firstName: 'Mickey', lastName: 'Mouse')
-teamdisney.team_members.create!(firstName: 'Donald J.', lastName: 'Duck')
-teamdisney.team_members.create!(firstName: 'Goofy', lastName: 'Dog')
-teamdisney.team_members.create!(firstName: 'Pluto', lastName: 'Dog (no relation)')
+td_mm = teamdisney.team_members.create!(firstName: 'Mickey', lastName: 'Mouse')
+td_dd = teamdisney.team_members.create!(firstName: 'Donald J.', lastName: 'Duck')
+td_gd = teamdisney.team_members.create!(firstName: 'Goofy', lastName: 'Dog')
+td_pd = teamdisney.team_members.create!(firstName: 'Pluto', lastName: 'Dog (no relation)')
 
 teamwb = instsu.teams.create!(name: "Warner Brothers & Co.", institution_id: instsu.id)
 
-teamwb.team_members.create!(firstName: 'Bugs', lastName: 'Bunny')
-teamwb.team_members.create!(firstName: 'Elmer', lastName: 'Fudd')
-teamwb.team_members.create!(firstName: 'Daffy', lastName: 'Duck')
-teamwb.team_members.create!(firstName: 'Porky', lastName: 'Pig')
+tw_bb = teamwb.team_members.create!(firstName: 'Bugs', lastName: 'Bunny')
+tw_ef = teamwb.team_members.create!(firstName: 'Elmer', lastName: 'Fudd')
+tw_dd = teamwb.team_members.create!(firstName: 'Daffy', lastName: 'Duck')
+tw_pp = teamwb.team_members.create!(firstName: 'Porky', lastName: 'Pig')
+
+
 
 local_competition = Competition.create!(
-	title: 'Local Mock Trail Competition', 
+	title: 'Local Mock Trial Competition', 
 	institution_id: instcrhs.id,
 	case_id: thisyearscase.id,
 	eventDatetime: DateTime.new(2016,10,22),
 )
 regional_competition = Competition.create!(
-	title: 'Regional Mock Trail Competition', 
+	title: 'Regional Mock Trial Competition', 
 	institution_id: instsu.id,
 	case_id: thisyearscase.id,
 	eventDatetime: DateTime.new(2016,11,07),
 )
 national_competition = Competition.create!(
-	title: 'National Mock Trail Competition', 
+	title: 'National Mock Trial Competition', 
 	institution_id: instnu.id,
 	case_id: thisyearscase.id,
 	eventDatetime: DateTime.new(2017,02,03),
@@ -59,6 +61,21 @@ national_competition = Competition.create!(
 end
 
 competition = Competition.last
+round = Round.last
+
+round.roles.create!(name: "Plantiff Attorney 1", team_member_id: td_mm.id)
+round.roles.create!(name: "Plantiff Attorney 2", team_member_id: td_dd.id)
+round.roles.create!(name: "Plantiff Attorney 3", team_member_id: td_gd.id)
+round.roles.create!(name: "Plantiff Witness 1", team_member_id: td_pd.id)
+round.roles.create!(name: "Plantiff Witness 2", team_member_id: td_pd.id)
+round.roles.create!(name: "Plantiff Witness 3", team_member_id: td_pd.id)
+round.roles.create!(name: "Defense Attorney 1", team_member_id: tw_bb.id)
+round.roles.create!(name: "Defense Attorney 2", team_member_id: tw_dd.id)
+round.roles.create!(name: "Defense Attorney 3", team_member_id: tw_pp.id)
+round.roles.create!(name: "Defense Witness 1", team_member_id: tw_ef.id)
+round.roles.create!(name: "Defense Witness 2", team_member_id: tw_ef.id)
+round.roles.create!(name: "Defense Witness 3", team_member_id: tw_ef.id)
+
 phase_data = []
 phase_data[1] = competition.phases.create!(
 	order: 1,
@@ -106,33 +123,33 @@ phase_data[4] = competition.phases.create!(
 	)
 phase_data[5] = competition.phases.create!(
 	order: 5,
-	pTitle: 'Defense Witness 1',
+	pTitle: 'Defense Witness 1 Cross',
 	pScore1: 'Attorney',
 	pScore2: 'Witness',
 	pScore3: '',
-	dTitle: 'Defense Witness 1 Cross',
+	dTitle: 'Defense Witness 1',
 	dScore1: 'Attorney',
 	dScore2: 'Witness',
 	dScore3: 'Argument',
 	)
 phase_data[6] = competition.phases.create!(
 	order: 6,
-	pTitle: 'Defense Witness 2',
+	pTitle: 'Defense Witness 2 Cross',
 	pScore1: 'Attorney',
 	pScore2: 'Witness',
 	pScore3: '',
-	dTitle: 'Defense Witness 2 Cross',
+	dTitle: 'Defense Witness 2',
 	dScore1: 'Attorney',
 	dScore2: 'Witness',
 	dScore3: 'Argument',
 	)
 phase_data[7] = competition.phases.create!(
 	order: 7,
-	pTitle: 'Defense Witness 3',
+	pTitle: 'Defense Witness 3 Cross',
 	pScore1: 'Attorney',
 	pScore2: 'Witness',
 	pScore3: '',
-	dTitle: 'Defense Witness 3 Cross',
+	dTitle: 'Defense Witness 3',
 	dScore1: 'Attorney',
 	dScore2: 'Witness',
 	dScore3: 'Argument',
