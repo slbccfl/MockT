@@ -4,16 +4,29 @@
 <div class="container">
 	<h2> New Role for Round <%= @round.number %></h2>
 
-	<%= form_for @role, url: competition_round_roles_path(@competition ,@round) do |f| %>
-		<%= f.label :name %>
-		<%= f.text_field :name %>
+	<%= form_for @role, url: competition_round_roles_path(@competition, @round) do |f| %>
+		<div class = "row">
+			<% if @role.side == 'p' %>
+				<h3><%= @team.name %> Plantiff/Prosecution Team Role</h3>
+			<% else %>
+				<h3><%= @team.name %> Defense Team Role</h3>
+			<% end %>
+		</div>
+		<div class = "row" >
+			<div class = "col-sm-4" >
+				<%= f.label :name %>
+				<%= f.text_field :name %>
+			</div>
+			<div class = "col-sm-8" >
+				<%= f.label "Team Member Assigned to Role: " %>
 
-		<%= f.label "Team Member Assigned: " %>
+				<%= f.collection_select(:team_member_id, @team_members, :id, :fullName) %>
 
-		<%= f.collection_select(:team_member_id, @team_members, :id, :fullName) %>
-
-		<%= hidden_field_tag :competition, @competition %>
-		<%= hidden_field_tag :round, @round %>
+				<%= hidden_field_tag :competition, @competition %>
+				<%= hidden_field_tag :round, @round %>
+				<%= hidden_field_tag :side, @role.side %>
+			</div>
+		</div>
 		<br>
 		<br>
 		<%= f.button %>

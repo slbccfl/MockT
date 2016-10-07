@@ -56,25 +56,29 @@ national_competition = Competition.create!(
 )
 [local_competition, regional_competition, national_competition].each do |competition|
 	4.times do |i|
-		competition.rounds << Round.new(number: i+1)
+		competition.rounds << Round.new(
+			number: i+1,
+			p_team_id: teamdisney.id,
+			d_team_id: teamwb.id,
+			)
 	end
 end
 
 competition = Competition.last
 round = Round.last
 
-round.roles.create!(name: "Plantiff Attorney 1", team_member_id: td_mm.id)
-round.roles.create!(name: "Plantiff Attorney 2", team_member_id: td_dd.id)
-round.roles.create!(name: "Plantiff Attorney 3", team_member_id: td_gd.id)
-round.roles.create!(name: "Plantiff Witness 1", team_member_id: td_pd.id)
-round.roles.create!(name: "Plantiff Witness 2", team_member_id: td_pd.id)
-round.roles.create!(name: "Plantiff Witness 3", team_member_id: td_pd.id)
-round.roles.create!(name: "Defense Attorney 1", team_member_id: tw_bb.id)
-round.roles.create!(name: "Defense Attorney 2", team_member_id: tw_dd.id)
-round.roles.create!(name: "Defense Attorney 3", team_member_id: tw_pp.id)
-round.roles.create!(name: "Defense Witness 1", team_member_id: tw_ef.id)
-round.roles.create!(name: "Defense Witness 2", team_member_id: tw_ef.id)
-round.roles.create!(name: "Defense Witness 3", team_member_id: tw_ef.id)
+round.roles.create!(name: "Plantiff Attorney 1", team_member_id: td_mm.id, side: "p")
+round.roles.create!(name: "Plantiff Attorney 2", team_member_id: td_dd.id, side: "p")
+round.roles.create!(name: "Plantiff Attorney 3", team_member_id: td_gd.id, side: "p")
+round.roles.create!(name: "Plantiff Witness 1", team_member_id: td_pd.id, side: "p")
+round.roles.create!(name: "Plantiff Witness 2", team_member_id: td_pd.id, side: "p")
+round.roles.create!(name: "Plantiff Witness 3", team_member_id: td_pd.id, side: "p")
+round.roles.create!(name: "Defense Attorney 1", team_member_id: tw_bb.id, side: "d")
+round.roles.create!(name: "Defense Attorney 2", team_member_id: tw_dd.id, side: "d")
+round.roles.create!(name: "Defense Attorney 3", team_member_id: tw_pp.id, side: "d")
+round.roles.create!(name: "Defense Witness 1", team_member_id: tw_ef.id, side: "d")
+round.roles.create!(name: "Defense Witness 2", team_member_id: tw_ef.id, side: "d")
+round.roles.create!(name: "Defense Witness 3", team_member_id: tw_ef.id, side: "d")
 
 phase_data = []
 phase_data[1] = competition.phases.create!(

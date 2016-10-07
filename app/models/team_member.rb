@@ -4,6 +4,6 @@ class TeamMember < ApplicationRecord
 	belongs_to :team
 
 	def fullName
-		"#{firstName}. #{lastName}"
+		"#{firstName} #{lastName}"
 	end
 end

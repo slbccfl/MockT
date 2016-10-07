@@ -1,7 +1,8 @@
 <div class = "row mockt-page-nav">
    <button class="btn btn-secondary"><%= link_to "Cancel" , competition_path(@competition) %></button>
    <button class="btn btn-secondary"><%= link_to "Assign Teams" , edit_competition_round_path(@competition, @round) %></button>
-      <button class="btn btn-secondary"><%= link_to "Add a Role" , new_competition_round_role_path(@competition, @round) %></button>
+      <button class="btn btn-secondary"><%= link_to 'Add a "P" Team Role' , new_competition_round_role_path(@competition, @round, side: "p") %></button>
+      <button class="btn btn-secondary"><%= link_to 'Add a "D" Team Role' , new_competition_round_role_path(@competition, @round, side: "d") %></button>
    <button class="btn btn-secondary"><%= link_to "Add a Ballot" , new_competition_round_ballot_path(@competition, @round) %></button>
 </div>
 
@@ -10,10 +11,10 @@
 	<h2>Round <%= @round.number %> of <%= @competition.title %></h2>
 	<div class = "row team-assigns">
 		<div class = "col-sm-6">
-			<h3>Plantiff / Prosecution: <%= @round.p_team_id %></h3>
+			<h3>Plantiff / Prosecution: <%= @p_team.name %></h3>
 		</div>
 		<div class = "col-sm-6">
-			<h3>Defense: <%= @round.d_team_id %></h3>
+			<h3>Defense: <%= @d_team.name %></h3>
 		</div>
 	<div class="row mockt-round">
 		<div class = "col-sm-6">
@@ -22,7 +23,7 @@
 		   <ul class="list-group">
 				<% @round_roles.each do |role| %>
 			   	<% team_member = TeamMember.find(role.team_member_id) %>
-			   	<li class="list-group-item"><%= link_to "#{role.name}: #{team_member.firstName} #{team_member.lastName} ", role_path(role.id) %></li>
+			   	<li class="list-group-item"><%= link_to "#{role.name}: #{team_member.firstName} #{team_member.lastName} (#{role.side})", role_path(role.id) %></li>
 			   <% end %>
 		   </ul>
 		</div>

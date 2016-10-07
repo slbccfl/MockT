@@ -3,12 +3,23 @@ class RolesController < ApplicationController
 		@role = Role.new
 		@competition = Competition.find_by(id: params[:competition_id])
 		@round = Round.find_by(id: params[:round_id])
-		@team_members = TeamMember.all
+		@role.side = params[:side]
+
+		if @role.side == "p"
+			@team = Team.find_by(id: @round.p_team_id)
+			@team_members = TeamMember.where(team_id: @round.p_team_id)
+		else
+			@team = Team.find_by(id: @round.d_team_id)
+			@team_members = TeamMember.where(team_id: @round.d_team_id)
+		end
 	end
 	def create
 		puts 'create action found in roles_controller.rb'
-		role = Role.new(name: params[:role][:name],team_member_id: (params[:role][:team_member_id]).to_i,)
-
+		role = Role.new(
+			name: params[:role][:name],
+			team_member_id: (params[:role][:team_member_id]).to_i,
+			side: params[:side],
+			)
 		round = Round.find_by(id: params[:round_id])
 		round.roles.push(role)
 
