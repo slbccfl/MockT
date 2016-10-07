@@ -33,6 +33,7 @@ class BallotsController < ApplicationController
 		@competition = Competition.find_by(id: @round.competition_id)	
 		@phases = Phase.where(competition_id: @round.competition_id)
 		@institution = Institution.find_by(id: @competition.institution_id)
+		@scores = Score.where(ballot_id: @ballot.id)
 	end
 
 	def update

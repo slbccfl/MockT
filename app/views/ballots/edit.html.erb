@@ -24,28 +24,36 @@
 		<div class = 'row border'>
 			<div class = 'col-sm-6 border-right'>
 				<h2><%= phase.pTitle %></h2>
-					<% 3.times do %>
+				<% phaseScores = @scores.where(ballot_id: @ballot.id, phase_id: phase.id) %>
+				<% 3.times do |roleCount| %>
 					<div class = 'col-sm-8 text-right'>
-						<%= select_tag("scores[][role_id]", options_from_collection_for_select(@roles, :id, :name), {prompt: ''}) %>
+						<% phaseRole_id = phaseScores[roleCount][:role_id] %>
+						<% phaseScore = phaseScores[roleCount][:score] %>
+
+						<%= select_tag("scores[][role_id]", options_from_collection_for_select(@roles, :id, :name, phaseRole_id), {prompt: ''}) %>
 					</div><!-- close score label column -->
 					<div class = 'col-sw-4'>
-						<input type="number" name="scores[][score]">
+						<input type="number" name="scores[][score]" min="0" max="10" step=".5" value="<%= phaseScore %>">
 						<input type="hidden" name="scores[][phase_id]" value="<%= phase.id %>">
 					</div><!-- close score column -->
 				<% end %>
 			</div>
 			<div class = 'col-sm-6 border-right'>
 				<h2><%= phase.dTitle %></h2>
-					<% 3.times do %>
+				<% phaseScores = @scores.where(ballot_id: @ballot.id, phase_id: phase.id) %>
+				<% 3.times do |roleCount| %>
 					<div class = 'col-sm-8 text-right'>
-						<%= select_tag("scores[][role_id]", options_from_collection_for_select(@roles, :id, :name), {prompt: ''}) %>
+						<% phaseRole_id = phaseScores[roleCount][:role_id] %>
+						<% phaseScore = phaseScores[roleCount][:score] %>
+
+						<%= select_tag("scores[][role_id]", options_from_collection_for_select(@roles, :id, :name, phaseRole_id), {prompt: ''}) %>
 					</div><!-- close score label column -->
 					<div class = 'col-sw-4'>
-						<input type="number" name="scores[][score]">
+						<input type="number" name="scores[][score]" min="0" max="10" step=".5" value="<%= phaseScore %>">
 						<input type="hidden" name="scores[][phase_id]" value="<%= phase.id %>">
 					</div><!-- close score column -->
 				<% end %>
-			</div><!-- close ballot cell -->
+			</div>
 		</div><!-- close phase row -->
 	<% end %><!-- close phases loop -->	
 </div> <!-- close ballot container -->

@@ -1,0 +1,30 @@
+<div class = "row mockt-page-nav">
+</div>
+
+<div class="container">
+	<h2> Assign Teams for Round <%= @round.number %></h2>
+	<div class = "row">
+		<%= form_for @round, url: competition_round_path(@competition ,@round) do |f| %>
+			<div class = "col-sm-6">
+				<%= f.label "Plantiff / Prosecution Team Assigned: " %>
+
+				<%= f.collection_select(:p_team_id, @teams, :id, :name) %>
+
+				<%= hidden_field_tag :competition, @competition %>
+				<%= hidden_field_tag :round, @round %>
+				<br>
+			</div>
+			<div class = "col-sm-6">
+				<%= f.label "Defense Team Assigned: " %>
+
+				<%= f.collection_select(:p_team_id, @teams, :id, :name) %>
+
+				<%= hidden_field_tag :competition, @competition %>
+				<%= hidden_field_tag :round, @round %>
+				<br>
+			</div>
+			<br>
+			<%= f.button %>
+		<% end %>
+	</div>
+</div>

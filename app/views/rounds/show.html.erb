@@ -1,12 +1,20 @@
 <div class = "row mockt-page-nav">
    <button class="btn btn-secondary"><%= link_to "Cancel" , competition_path(@competition) %></button>
-   <button class="btn btn-secondary"><%= link_to "Add a Role" , new_competition_round_role_path(@competition, @round) %></button>
+   <button class="btn btn-secondary"><%= link_to "Assign Teams" , edit_competition_round_path(@competition, @round) %></button>
+      <button class="btn btn-secondary"><%= link_to "Add a Role" , new_competition_round_role_path(@competition, @round) %></button>
    <button class="btn btn-secondary"><%= link_to "Add a Ballot" , new_competition_round_ballot_path(@competition, @round) %></button>
 </div>
 
 <div class="container"
 	<div class="row round-heading">
 	<h2>Round <%= @round.number %> of <%= @competition.title %></h2>
+	<div class = "row team-assigns">
+		<div class = "col-sm-6">
+			<h3>Plantiff / Prosecution: <%= @round.p_team_id %></h3>
+		</div>
+		<div class = "col-sm-6">
+			<h3>Defense: <%= @round.d_team_id %></h3>
+		</div>
 	<div class="row mockt-round">
 		<div class = "col-sm-6">
 		   <h3>Role Assignments</h3>
