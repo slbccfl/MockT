@@ -1,8 +1,16 @@
 class RoundsController < ApplicationController
+	def new
+		@competition = Competition.find_by(id: params[:competition_id])
+		@round = Round.new
+		@teams = Team.all
+	end
 	def create
 		puts 'create action found in rounds_controller.rb'
 		competition = Competition.find_by(id: params[:competition_id])
-		round = Round.new()
+		round = Round.new(
+				:p_team_id => params[:round][:p_team_id],
+				:d_team_id => params[:round][:d_team_id],
+				)
 		competition.rounds.push(round)
 		round.number = competition.rounds.count
 
@@ -34,6 +42,8 @@ class RoundsController < ApplicationController
 	def edit
 		@competition = Competition.find_by(id: params[:competition_id])
 		@round = Round.find_by(id: params[:id])
+		@p_team = Team.find_by(id: @round.p_team_id)
+		@d_team = Team.find_by(id: @round.d_team_id)
 		@teams = Team.all
 	end
 	def update

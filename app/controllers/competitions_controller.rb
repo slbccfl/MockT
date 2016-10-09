@@ -4,20 +4,22 @@ class CompetitionsController < ApplicationController
 	end
 	def new
 		@competition = Competition.new
+		@cases = Case.all
+		@institutions = Institution.all
 	end
 	def create
 	# Create a new competition from the parameters passed in the form
 		competition = Competition.new(
 			title: params[:competition][:title],
-			eventDatetime: params[:competition][:eventDatetime]
+			case_id: params[:competition][:case_id],
+			institution_id: params[:competition][:institution_id],
+			eventDatetime: params[:competition][:eventDatetime],
 		)
 
 		if competition.save
 			redirect_to competitions_path
 		else
-			@competition = competition
-
-			render "new"
+			render status: 404, json: { error: "Competition #{params[:id]} could not be created" }
 		end
 
 	end
@@ -32,6 +34,8 @@ class CompetitionsController < ApplicationController
 	end
 	def edit
 		@competition = Competition.find_by(id: params[:id])
+		@cases = Case.all
+		@institutions = Institution.all
 
 		if @competition
 			render :edit
@@ -43,7 +47,10 @@ class CompetitionsController < ApplicationController
 		competition = Competition.find_by(id: params[:id])
 
 		if competition.update(title: params[:competition][:title],
-				eventDatetime: params[:competition][:eventDatetime])
+				case_id: params[:competition][:case_id],
+				institution_id: params[:competition][:institution_id],
+				eventDatetime: params[:competition][:eventDatetime],
+				)
 			redirect_to competitions_path
 		else
 			render 'edit'

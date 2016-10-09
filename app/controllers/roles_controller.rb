@@ -7,10 +7,10 @@ class RolesController < ApplicationController
 
 		if @role.side == "p"
 			@team = Team.find_by(id: @round.p_team_id)
-			@team_members = TeamMember.where(team_id: @round.p_team_id)
+			@team_assignments = TeamAssignment.where(team_id: @round.p_team_id)
 		else
 			@team = Team.find_by(id: @round.d_team_id)
-			@team_members = TeamMember.where(team_id: @round.d_team_id)
+			@team_assignments = TeamAssignment.where(team_id: @round.d_team_id)
 		end
 	end
 	def create

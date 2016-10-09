@@ -6,7 +6,7 @@
 	<h1>Team Members</h1>
 	<ul class="list-group">
 		<% @team_members.each do |team_member| %>
-			<% li_item = "#{team_member.id}. #{team_member.lastName}, #{team_member.firstName}" %>
+			<% li_item = "#{team_member.id}. #{team_member.fullName}" %>
 			<li class="list-group-item"><%= link_to li_item, edit_team_member_path(team_member)%></li>
 		<% end %>
 	</ul>

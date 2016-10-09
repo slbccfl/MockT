@@ -4,11 +4,11 @@
 <div class="container">
 	<h2> Assign Teams for Round <%= @round.number %></h2>
 	<div class = "row">
-		<%= form_for @round, url: competition_round_path(@competition ,@round) do |f| %>
+		<%= form_for @round, url: competition_rounds_path(@competition) do |f| %>
 			<div class = "col-sm-6">
 				<%= f.label "Plantiff / Prosecution Team Assigned: " %>
 
-				<%= f.collection_select(:p_team_id, @teams, :id, :name, {:selected => @round.p_team_id}) %>
+				<%= f.collection_select(:p_team_id, @teams, :id, :name, :selected => @round.p_team_id) %>
 
 				<%= hidden_field_tag :competition, @competition %>
 				<%= hidden_field_tag :round, @round %>
@@ -17,13 +17,14 @@
 			<div class = "col-sm-6">
 				<%= f.label "Defense Team Assigned: " %>
 
-				<%= f.collection_select(:d_team_id, @teams, :id, :name), {:selected => @round.d_team_id}) %>>
+				<%= f.collection_select(:d_team_id, @teams, :id, :name, :selected => @round.d_team_id) %>>
 
 				<%= hidden_field_tag :competition, @competition %>
 				<%= hidden_field_tag :round, @round %>
 				<br>
 			</div>
 			<br>
+			boom
 			<%= f.button %>
 		<% end %>
 	</div>

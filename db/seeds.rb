@@ -22,19 +22,27 @@ insteu = Institution.create!(name: 'Eastern University')
 
 teamdisney = instnu.teams.create!(name: "Team Disney")
 
-td_mm = teamdisney.team_members.create!(firstName: 'Mickey', lastName: 'Mouse')
-td_dd = teamdisney.team_members.create!(firstName: 'Donald J.', lastName: 'Duck')
-td_gd = teamdisney.team_members.create!(firstName: 'Goofy', lastName: 'Dog')
-td_pd = teamdisney.team_members.create!(firstName: 'Pluto', lastName: 'Dog (no relation)')
+mm = TeamMember.create!(firstName: 'Mickey', lastName: 'Mouse')
+dd = TeamMember.create!(firstName: 'Donald J.', lastName: 'Duck')
+gd = TeamMember.create!(firstName: 'Goofy', lastName: 'Dog')
+pd = TeamMember.create!(firstName: 'Pluto', lastName: 'Dog (no relation)')
+
+td_mm = TeamAssignment.create!(team_id: teamdisney.id, team_member_id: mm.id)
+td_dd = TeamAssignment.create!(team_id: teamdisney.id, team_member_id: dd.id)
+td_gd = TeamAssignment.create!(team_id: teamdisney.id, team_member_id: gd.id)
+td_pd = TeamAssignment.create!(team_id: teamdisney.id, team_member_id: pd.id)
 
 teamwb = instsu.teams.create!(name: "Warner Brothers & Co.", institution_id: instsu.id)
 
-tw_bb = teamwb.team_members.create!(firstName: 'Bugs', lastName: 'Bunny')
-tw_ef = teamwb.team_members.create!(firstName: 'Elmer', lastName: 'Fudd')
-tw_dd = teamwb.team_members.create!(firstName: 'Daffy', lastName: 'Duck')
-tw_pp = teamwb.team_members.create!(firstName: 'Porky', lastName: 'Pig')
+bb = TeamMember.create!(firstName: 'Bugs', lastName: 'Bunny')
+ef = TeamMember.create!(firstName: 'Elmer', lastName: 'Fudd')
+dd = TeamMember.create!(firstName: 'Daffy', lastName: 'Duck')
+pp = TeamMember.create!(firstName: 'Porky', lastName: 'Pig')
 
-
+tw_bb = TeamAssignment.create!(team_id: teamwb.id, team_member_id: bb.id)
+tw_ef = TeamAssignment.create!(team_id: teamwb.id, team_member_id: ef.id)
+tw_dd = TeamAssignment.create!(team_id: teamwb.id, team_member_id: dd.id)
+tw_pp = TeamAssignment.create!(team_id: teamwb.id, team_member_id: pp.id)
 
 local_competition = Competition.create!(
 	title: 'Local Mock Trial Competition', 
@@ -67,18 +75,18 @@ end
 competition = Competition.last
 round = Round.last
 
-round.roles.create!(name: "Plantiff Attorney 1", team_member_id: td_mm.id, side: "p")
-round.roles.create!(name: "Plantiff Attorney 2", team_member_id: td_dd.id, side: "p")
-round.roles.create!(name: "Plantiff Attorney 3", team_member_id: td_gd.id, side: "p")
-round.roles.create!(name: "Plantiff Witness 1", team_member_id: td_pd.id, side: "p")
-round.roles.create!(name: "Plantiff Witness 2", team_member_id: td_pd.id, side: "p")
-round.roles.create!(name: "Plantiff Witness 3", team_member_id: td_pd.id, side: "p")
-round.roles.create!(name: "Defense Attorney 1", team_member_id: tw_bb.id, side: "d")
-round.roles.create!(name: "Defense Attorney 2", team_member_id: tw_dd.id, side: "d")
-round.roles.create!(name: "Defense Attorney 3", team_member_id: tw_pp.id, side: "d")
-round.roles.create!(name: "Defense Witness 1", team_member_id: tw_ef.id, side: "d")
-round.roles.create!(name: "Defense Witness 2", team_member_id: tw_ef.id, side: "d")
-round.roles.create!(name: "Defense Witness 3", team_member_id: tw_ef.id, side: "d")
+round.roles.create!(name: "Plantiff Attorney 1", team_member_id: mm.id, side: "p")
+round.roles.create!(name: "Plantiff Attorney 2", team_member_id: dd.id, side: "p")
+round.roles.create!(name: "Plantiff Attorney 3", team_member_id: gd.id, side: "p")
+round.roles.create!(name: "Plantiff Witness 1", team_member_id: pd.id, side: "p")
+round.roles.create!(name: "Plantiff Witness 2", team_member_id: pd.id, side: "p")
+round.roles.create!(name: "Plantiff Witness 3", team_member_id: pd.id, side: "p")
+round.roles.create!(name: "Defense Attorney 1", team_member_id: bb.id, side: "d")
+round.roles.create!(name: "Defense Attorney 2", team_member_id: dd.id, side: "d")
+round.roles.create!(name: "Defense Attorney 3", team_member_id: pp.id, side: "d")
+round.roles.create!(name: "Defense Witness 1", team_member_id: ef.id, side: "d")
+round.roles.create!(name: "Defense Witness 2", team_member_id: ef.id, side: "d")
+round.roles.create!(name: "Defense Witness 3", team_member_id: ef.id, side: "d")
 
 phase_data = []
 phase_data[1] = competition.phases.create!(

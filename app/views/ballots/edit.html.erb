@@ -24,7 +24,7 @@
 		<div class = 'row border'>
 			<div class = 'col-sm-6 border-right'>
 				<h2><%= phase.pTitle %></h2>
-				<% phaseScores = @scores.where(ballot_id: @ballot.id, phase_id: phase.id) %>
+				<% phaseScores = @scores.joins(:role).where(ballot_id: @ballot.id, phase_id: phase.id, roles: { side: "p" }) %>
 				<% 3.times do |roleCount| %>
 					<div class = 'col-sm-8 text-right'>
 						<% if phaseScores[roleCount] != nil %>
@@ -41,14 +41,13 @@
 			</div>
 			<div class = 'col-sm-6 border-right'>
 				<h2><%= phase.dTitle %></h2>
-				<% phaseScores = @scores.where(ballot_id: @ballot.id, phase_id: phase.id) %>
+				<% phaseScores = @scores.joins(:role).where(ballot_id: @ballot.id, phase_id: phase.id, roles: { side: "d" }) %>
 				<% 3.times do |roleCount| %>
 					<div class = 'col-sm-8 text-right'>
 						<% if phaseScores[roleCount] != nil %>
 							<% phaseRole_id = phaseScores[roleCount][:role_id] %>
 							<% phaseScore = phaseScores[roleCount][:score] %>
 						<% end %>
-<%= phaseRole_id %>
 						<%= select_tag("scores[][role_id]", options_from_collection_for_select(@d_roles, :id, :name, phaseRole_id), {prompt: ''}) %>
 					</div><!-- close score label column -->
 					<div class = 'col-sw-4'>
