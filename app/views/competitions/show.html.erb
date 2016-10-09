@@ -4,7 +4,7 @@
 	<button class="btn btn-secondary"><%= link_to "Delete Competition", competition_path(@competition), method: :delete  %></button>
 	<button class="btn btn-secondary"><%= link_to "Define Ballot", competition_phases_path(@competition)%></button>
 	<form class = "btn btn-secondary" method="post" action="/competitions/<%= @competition.id %>/rounds">
-		<button class="btn btn-secondary" type="submit">Add</button>	
+		<button class="btn btn-secondary" type="submit">Add Round</button>	
 		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 	</form>
 

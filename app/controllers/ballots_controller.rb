@@ -4,7 +4,6 @@ class BallotsController < ApplicationController
 		@competition = Competition.find_by(id: params[:competition_id])
 		@round = Round.find_by(id: params[:round_id])
 		@judges = Judge.all
-		@roles = Role.where(round_id: @round.id)
 		@scores = Score.where(ballot_id: @ballot.id)
 	end
 
@@ -29,7 +28,8 @@ class BallotsController < ApplicationController
 		@ballot = Ballot.find_by(id: params[:id])
 		@judge = Judge.find_by(id: @ballot.judge_id)
 		@round = Round.find_by(id: @ballot.round_id)
-		@roles = Role.where(round_id: @round.id)
+		@p_roles = Role.where(round_id: @round.id, side: "p")
+		@d_roles = Role.where(round_id: @round.id, side: "d")
 		@competition = Competition.find_by(id: @round.competition_id)	
 		@phases = Phase.where(competition_id: @round.competition_id)
 		@institution = Institution.find_by(id: @competition.institution_id)

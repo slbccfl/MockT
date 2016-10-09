@@ -33,7 +33,7 @@
 		   <ul class="list-group">
 			   <% @round_ballots.each do |ballot| %>
 			   	<% judge = Judge.find(ballot.judge_id) %>
-			   	<li class="list-group-item"><%= link_to "Ballot for Judge #{judge.lastName} ", edit_ballot_path(ballot.id) %></li>
+			   	<li class="list-group-item"><%= link_to "Ballot for Judge #{judge.fullName} ", edit_ballot_path(ballot.id) %></li>
 			   <% end %>
 		   </ul>
 	   </div>

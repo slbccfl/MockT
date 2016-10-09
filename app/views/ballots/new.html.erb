@@ -7,7 +7,7 @@
 	<%= form_for @ballot, url: competition_round_ballots_path(@competition ,@round) do |f| %>
 		<%= f.label "Judge Scoring the Ballot: " %>
 
-		<%= f.collection_select(:judge_id, @judges, :id, :lastName) %>
+		<%= f.collection_select(:judge_id, @judges, :id, :fullName) %>
 
 		<%= hidden_field_tag :competition, @competition %>
 		<%= hidden_field_tag :round, @round %>

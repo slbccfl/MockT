@@ -8,7 +8,7 @@
 	<header class='row text-center themecolor'>
 		<h1><%= @competition.title %></h1>
 		<h2><%= @institution.name %> on <%= @competition.eventDatetime.strftime("%F") %></h2>
-		<h3>Round <%= @round.number %> - Ballot of Judge <%= @judge.lastName %></h3>
+		<h3>Round <%= @round.number %> - Ballot of Judge <%= @judge.fullName %></h3>
 		<div class = 'col-sm-6'>
 			<h2>Plantiff / Prosecution</h2>
 		</div>
@@ -27,10 +27,11 @@
 				<% phaseScores = @scores.where(ballot_id: @ballot.id, phase_id: phase.id) %>
 				<% 3.times do |roleCount| %>
 					<div class = 'col-sm-8 text-right'>
-						<% phaseRole_id = phaseScores[roleCount][:role_id] %>
-						<% phaseScore = phaseScores[roleCount][:score] %>
-
-						<%= select_tag("scores[][role_id]", options_from_collection_for_select(@roles, :id, :name, phaseRole_id), {prompt: ''}) %>
+						<% if phaseScores[roleCount] != nil %>
+							<% phaseRole_id = phaseScores[roleCount][:role_id] %>
+							<% phaseScore = phaseScores[roleCount][:score] %>
+						<% end %>
+						<%= select_tag("scores[][role_id]", options_from_collection_for_select(@p_roles, :id, :name, phaseRole_id), {prompt: ''}) %>
 					</div><!-- close score label column -->
 					<div class = 'col-sw-4'>
 						<input type="number" name="scores[][score]" min="0" max="10" step=".5" value="<%= phaseScore %>">
@@ -43,10 +44,12 @@
 				<% phaseScores = @scores.where(ballot_id: @ballot.id, phase_id: phase.id) %>
 				<% 3.times do |roleCount| %>
 					<div class = 'col-sm-8 text-right'>
-						<% phaseRole_id = phaseScores[roleCount][:role_id] %>
-						<% phaseScore = phaseScores[roleCount][:score] %>
-
-						<%= select_tag("scores[][role_id]", options_from_collection_for_select(@roles, :id, :name, phaseRole_id), {prompt: ''}) %>
+						<% if phaseScores[roleCount] != nil %>
+							<% phaseRole_id = phaseScores[roleCount][:role_id] %>
+							<% phaseScore = phaseScores[roleCount][:score] %>
+						<% end %>
+<%= phaseRole_id %>
+						<%= select_tag("scores[][role_id]", options_from_collection_for_select(@d_roles, :id, :name, phaseRole_id), {prompt: ''}) %>
 					</div><!-- close score label column -->
 					<div class = 'col-sw-4'>
 						<input type="number" name="scores[][score]" min="0" max="10" step=".5" value="<%= phaseScore %>">

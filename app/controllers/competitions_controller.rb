@@ -13,12 +13,13 @@ class CompetitionsController < ApplicationController
 		)
 
 		if competition.save
-			redirect_to competition_path(competition)
+			redirect_to competitions_path
 		else
 			@competition = competition
 
 			render "new"
 		end
+
 	end
 	def show
 		@competition = Competition.find_by(id: params[:id])
