@@ -28,6 +28,8 @@ class BallotsController < ApplicationController
 		@ballot = Ballot.find_by(id: params[:id])
 		@judge = Judge.find_by(id: @ballot.judge_id)
 		@round = Round.find_by(id: @ballot.round_id)
+		@p_team = Team.find_by(id: @round.p_team_id)
+		@d_team = Team.find_by(id: @round.d_team_id)
 		@p_roles = Role.where(round_id: @round.id, side: "p")
 		@d_roles = Role.where(round_id: @round.id, side: "d")
 		@competition = Competition.find_by(id: @round.competition_id)	

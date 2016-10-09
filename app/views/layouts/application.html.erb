@@ -15,16 +15,19 @@
   <div class="container mockt-heading">
     <div class="row">
       <div class="row">
-        <div class="col-sm-9 mockt-heading-col">
+        <div class="col-sm-2 mockt-heading-col">
           <h1 class="mockt-title"><em>MockT</em></h1>
+        </div>
+        <div class="col-sm-7 mockt-heading-col">
           <h2 class="mockt-title">The Mock Trial Competition Archives</h2>
         </div><!-- close columns -->
-        <div class="col-sm-3 mockt-heading-col">
-          <div class="btn-group-vertical" role="group" aria-label="Heading Nav">
+        <div class="col-sm-3">
+          <div class="btn-group" role="group" aria-label="Heading Nav">
             <% if current_user %>
               <h4>Welcome, <%= current_user.email %>!</h4>
             <% else %>
-              <h4> Register for access or log in to MockT </h4>
+              <h4>Sign up for access</h4>
+              <h4>    or log in to MockT </h4>
             <% end %>
             <% if current_user %>
               <button class="btn btn-secondary"><%= link_to "Profile", "/users/edit" %></button>
@@ -40,24 +43,9 @@
         </div><!-- close columns -->
       </div><!-- close row -->
     </div><!-- close row -->
-    <div class="row mockt-heading-nav"> 
-      <div class="col-sm-9 mockt-heading-col">
-        <div class="btn-group" role="group" aria-label="Heading Nav">
-          <% if current_user %>
-            <button class="btn btn-secondary"><%= link_to "Competitions", competitions_path %></button>
-            <button class="btn btn-secondary"><%= link_to "Teams", teams_path %></button>
-            <button class="btn btn-secondary"><%= link_to "Team Members", team_members_path %></button>
-          <% end %>
-        </div><!-- close btn-group -->
-      </div><!-- close columns -->
-      <div class="col-sm-3 mockt-heading-col">
-          <div class="btn-group" role="group" aria-label="Heading Nav">
-          </div><!-- close btn-group -->
-      </div><!-- close columns -->
-    </div><!-- close row -->
   </div><!-- close container-->
   
-  <div class = "container-fluid">
+  <div class = "container-fluid ">
   </div>
 
   <%= yield %>

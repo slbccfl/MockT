@@ -1,10 +1,19 @@
 <div class = "row mockt-page-nav">
-	<button class="btn btn-secondary">
-		<%= link_to "Add a Team Member to this Team", new_team_member_path %>
-	</button><br>
-	<button class="btn btn-secondary">
-		<%= link_to "Add New Team Members", new_team_member_path %>
-	</button><br>
+  	<div class="col-sm-8">
+		<button class="btn btn-secondary">
+			<%= link_to "Add a Team Member to this Team", new_team_member_path %>
+		</button><br>
+		<button class="btn btn-secondary">
+			<%= link_to "Add New Team Members", new_team_member_path %>
+		</button><br>
+	</div><!-- close column -->
+	<div class="col-sm-4">
+        <div class="btn-group" role="group" aria-label="Heading Nav">
+            <button class="btn btn-secondary"><%= link_to "Competitions", competitions_path %></button>
+            <button class="btn btn-secondary"><%= link_to "Teams", teams_path %></button>
+            <button class="btn btn-secondary"><%= link_to "Team Members", team_members_path %></button>
+        </div><!-- close btn-group -->
+      </div><!-- close column -->
 </div>
 
 <div class="container">

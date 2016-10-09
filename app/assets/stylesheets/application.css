@@ -16,7 +16,7 @@
 
 .mockt-heading-background {
 	position: absolute;
-	height: 25vh;
+	height: 23vh;
 	width: 100%;
 	background-image: url('mockt-header-img.jpg');
 	background-size: cover;
@@ -24,7 +24,7 @@
     opacity: 0.6;
 }
 .mockt-heading {
-	height: 25vh;
+	height: 15vh;
 	top: 0;
 	left: 0;
 }
@@ -35,13 +35,16 @@
 	padding: 0;
 	margin: 0;
 }
+.ballot-heading {
+	margin: 5px;
+}
 
 
 .homepage-container{
 	position: absolute;
-	top: 25vh;
+	top: 23vh;
 	width: 100%;
-	height: 75vh;
+	height: 77vh;
 	background-size: 100%, 100%;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e6ecfc+0,769dfa+19,b6c9f6+50,769dfa+77,a6bdf4+100,c1d1f7+100 */
 	background: #e6ecfc; /* Old browsers */
@@ -52,8 +55,10 @@
 }
 
 .mockt-page {
+	position: absolute;
+	top: 23vh;
 	width: 100%;
-	height: 75vh;
+	height: 77vh;
 	background-size: 100%, 100%;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e6ecfc+0,769dfa+19,b6c9f6+50,769dfa+77,a6bdf4+100,c1d1f7+100 */
 	background: #e6ecfc; /* Old browsers */
@@ -63,7 +68,7 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6ecfc', endColorstr='#c1d1f7',GradientType=0 ); /* IE6-9 */
 }
 .mockt-page-nav {
-	padding: 0px 100px 0px 100px;
+	padding: 0;
 	margin: 0;
 }
 .btn-primary {
@@ -73,13 +78,13 @@
 }
 
 .mockt-heading-col {
-	padding: 15px;
 }
 .mockt-container {
 	width: 100%;
 	height: 100%;
 
 }
+
 .list-group-item {
 	padding: 3px;
 }

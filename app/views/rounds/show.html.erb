@@ -1,9 +1,18 @@
 <div class = "row mockt-page-nav">
-   <button class="btn btn-secondary"><%= link_to "Cancel" , competition_path(@competition) %></button>
-   <button class="btn btn-secondary"><%= link_to "Assign Teams" , edit_competition_round_path(@competition, @round) %></button>
-      <button class="btn btn-secondary"><%= link_to 'Add a "P" Team Role' , new_competition_round_role_path(@competition, @round, side: "p") %></button>
-      <button class="btn btn-secondary"><%= link_to 'Add a "D" Team Role' , new_competition_round_role_path(@competition, @round, side: "d") %></button>
-   <button class="btn btn-secondary"><%= link_to "Add a Ballot" , new_competition_round_ballot_path(@competition, @round) %></button>
+  	<div class="col-sm-8">
+	   <button class="btn btn-secondary"><%= link_to "Cancel" , competition_path(@competition) %></button>
+	   <button class="btn btn-secondary"><%= link_to "Assign Teams" , edit_competition_round_path(@competition, @round) %></button>
+	      <button class="btn btn-secondary"><%= link_to 'Add a "P" Team Role' , new_competition_round_role_path(@competition, @round, side: "p") %></button>
+	      <button class="btn btn-secondary"><%= link_to 'Add a "D" Team Role' , new_competition_round_role_path(@competition, @round, side: "d") %></button>
+	   <button class="btn btn-secondary"><%= link_to "Add a Ballot" , new_competition_round_ballot_path(@competition, @round) %></button>
+	</div><!-- close column -->
+	<div class="col-sm-4">
+        <div class="btn-group" role="group" aria-label="Heading Nav">
+            <button class="btn btn-secondary"><%= link_to "Competitions", competitions_path %></button>
+            <button class="btn btn-secondary"><%= link_to "Teams", teams_path %></button>
+            <button class="btn btn-secondary"><%= link_to "Team Members", team_members_path %></button>
+        </div><!-- close btn-group -->
+      </div><!-- close column -->
 </div>
 
 <div class="container"

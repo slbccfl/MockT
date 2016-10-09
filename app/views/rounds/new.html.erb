@@ -1,4 +1,13 @@
 <div class = "row mockt-page-nav">
+  	<div class="col-sm-8">
+	</div><!-- close column -->
+	<div class="col-sm-4">
+        <div class="btn-group" role="group" aria-label="Heading Nav">
+            <button class="btn btn-secondary"><%= link_to "Competitions", competitions_path %></button>
+            <button class="btn btn-secondary"><%= link_to "Teams", teams_path %></button>
+            <button class="btn btn-secondary"><%= link_to "Team Members", team_members_path %></button>
+        </div><!-- close btn-group -->
+      </div><!-- close column -->
 </div>
 
 <div class="container">
@@ -10,8 +19,6 @@
 
 				<%= f.collection_select(:p_team_id, @teams, :id, :name, :selected => @round.p_team_id) %>
 
-				<%= hidden_field_tag :competition, @competition %>
-				<%= hidden_field_tag :round, @round %>
 				<br>
 			</div>
 			<div class = "col-sm-6">
@@ -19,12 +26,9 @@
 
 				<%= f.collection_select(:d_team_id, @teams, :id, :name, :selected => @round.d_team_id) %>>
 
-				<%= hidden_field_tag :competition, @competition %>
-				<%= hidden_field_tag :round, @round %>
 				<br>
 			</div>
 			<br>
-			boom
 			<%= f.button %>
 		<% end %>
 	</div>
