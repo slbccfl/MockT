@@ -1,0 +1,36 @@
+<div class = "row mockt-page-nav">
+  	<div class="col-sm-8">
+	</div><!-- close column -->
+	<div class="col-sm-4">
+        <div class="btn-group" role="group" aria-label="Heading Nav">
+            <button class="btn btn-secondary"><%= link_to "Competitions", competitions_path %></button>
+            <button class="btn btn-secondary"><%= link_to "Teams", teams_path %></button>
+            <button class="btn btn-secondary"><%= link_to "Team Members", team_members_path %></button>
+        </div><!-- close btn-group -->
+ 	</div><!-- close column -->
+</div>
+
+<div class="container mockt-page">
+	<div class="row">
+		<h1>Team Members Assigned to Team: <%= @team.name %></h1>
+	</div>
+	<div class="col-sm-6">
+		<h2>Currently Assigned to <%= @team.name %></h2>
+		<ul class="list-group">
+			<% @team_members.each do |member| %>
+				<% li_item = "#{member.id}. #{member.lastName}, #{member.firstName}" %>
+				<li class="list-group-item"><%= link_to li_item, edit_team_member_path(member) %></li>
+			<% end %>
+		</ul>
+	</div>
+	<div class="col-sm-6">
+		<h2>Team Members to Select</h2>
+		<ul class="list-group">
+			<% @all_team_members.each do |member| %>
+				<% li_item = "#{member.id}. #{member.lastName}, #{member.firstName}" %>
+				<li class="list-group-item"><%= link_to li_item, edit_team_member_path(member) %></li>
+			<% end %>
+		</ul>
+	</div>
+
+</div>

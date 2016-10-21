@@ -13,7 +13,7 @@
 <div class="container mockt-page">
 	<h2> Assign Teams for Round <%= @round.number %></h2>
 	<div class = "row">
-		<%= form_for @round, url: competition_round_path(@competition ,@round) do |f| %>
+		<%= form_for @round, url: competition_round_path(@competition, @round) do |f| %>
 			<div class = "col-sm-6">
 				<%= f.label "Plantiff / Prosecution Team Assigned: " %>
 
