@@ -12,25 +12,24 @@
 
 <div class="container mockt-page">
 	<div class="row">
-		<h1>Members of Team: <%= @team.name %></h1>
-	</div>
-	<div class="col-sm-6">
-		<h2>Currently Assigned to <%= @team.name %></h2>
-		<ul class="list-group">
-			<% @team_members.each do |member| %>
-				<% li_item = "#{member.lastName}, #{member.firstName} (#{member.id})" %>
-				<li class="list-group-item"><%= link_to li_item, edit_team_member_path(member) %></li>
-			<% end %>
-		</ul>
-	</div>
-	<div class="col-sm-6">
-		<h2>Team Members to Select</h2>
-		<ul class="list-group">
+		<h1>Select Members of Team: <%= @team.name %></h1>
+		<form id="teamassignform" action="create" method="post">
+    		<select multiple="multiple" size="14" name="team_assigns[]">
 			<% @all_team_members.each do |member| %>
+				<% if @team_members.include?(member) %>
+					<% team_member_selected = ' selected="selected"' %>
+				<% else %>
+					<% team_member_selected = '' %>
+				<% end %>
+
 				<% li_item = "#{member.lastName}, #{member.firstName} (#{member.id})" %>
-				<li class="list-group-item"><%= link_to li_item, edit_team_member_path(member) %></li>
+				<option value="<%= member.id %>"<%= team_member_selected %>><%= li_item %></option>
 			<% end %>
-		</ul>
+			</select>
+		   <button type="submit" class="btn btn-default btn-block">Submit data</button>
+  		</form>
+		<% var demo1 = $('select[name="team_assigns[]"]').bootstrapDualListbox() %>
+		<% $("#teamassignform").submit() %>
 	</div>
 
 </div>
