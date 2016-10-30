@@ -13,23 +13,24 @@
 <div class="container mockt-page">
 	<div class="row">
 		<h1>Select Members of Team: <%= @team.name %></h1>
-		<form id="teamassignform" action="create" method="post">
-    		<select multiple="multiple" size="14" name="team_assigns[]">
-			<% @all_team_members.each do |member| %>
-				<% if @team_members.include?(member) %>
-					<% team_member_selected = ' selected="selected"' %>
-				<% else %>
-					<% team_member_selected = '' %>
-				<% end %>
+		<form id="teamassignform" action=<%= team_team_assignments_path %> method="post">
+    		<select class="js-team-assign-duallist" multiple="multiple" size="14" name="team_assigns[]">
+				<% @all_team_members.each do |member| %>
+					<% if @team_members.include?(member) %>
+						<% team_member_selected = ' selected="selected"' %>
+					<% else %>
+						<% team_member_selected = '' %>
+					<% end %>
 
-				<% li_item = "#{member.lastName}, #{member.firstName} (#{member.id})" %>
-				<option value="<%= member.id %>"<%= team_member_selected %>><%= li_item %></option>
-			<% end %>
+					<% li_item = "#{member.lastName}, #{member.firstName} (#{member.id})" %>
+					<option value="<%= member.id %>"<%= team_member_selected %>><%= li_item %></option>
+				<% end %>
 			</select>
 		   <button type="submit" class="btn btn-default btn-block">Submit data</button>
   		</form>
-		<% var demo1 = $('select[name="team_assigns[]"]').bootstrapDualListbox() %>
-		<% $("#teamassignform").submit() %>
+		<script>
+			$('.js-team-assign-duallist').bootstrapDualListbox();
+			$("#demoform").submit();
+		</script>
 	</div>
-
 </div>
