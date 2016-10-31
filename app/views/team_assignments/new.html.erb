@@ -16,7 +16,7 @@
 		<form id="teamassignform" action=<%= team_team_assignments_path %> method="post">
     		<select class="js-team-assign-duallist" multiple="multiple" size="14" name="team_assigns[]">
 				<% @all_team_members.each do |member| %>
-					<% if @team_members.include?(member) %>
+					<% if @team_member_ids.include?(member.id) %>
 						<% team_member_selected = ' selected="selected"' %>
 					<% else %>
 						<% team_member_selected = '' %>
@@ -27,6 +27,7 @@
 				<% end %>
 			</select>
 		   <button type="submit" class="btn btn-default btn-block">Submit data</button>
+		   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   		</form>
 		<script>
 			$('.js-team-assign-duallist').bootstrapDualListbox();

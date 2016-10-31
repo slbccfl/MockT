@@ -1,7 +1,7 @@
 <div class = "row mockt-page-nav">
    <div class="col-sm-8">
       <button class="btn btn-secondary">
-         <%= link_to "Add Team Members", new_team_team_assignment_path(@team) %>
+         <%= link_to "Change Team Membership", new_team_team_assignment_path(@team) %>
       </button>
    </div><!-- close column -->
    <div class="col-sm-4">
@@ -29,4 +29,13 @@
       <%= f.button %>
 
    <% end %>
+
+   <h2> Members assigned to this team: </h2>
+   <ul class="list-group">
+      <% @team_assignments.each do |team_assignment| %>
+         <% team_member = TeamMember.find_by(id: team_assignment.team_member_id) %>
+         <% li_item = "#{team_member.fullName} (#{team_member.id})" %>
+         <li class="list-group-item"><%= link_to li_item, edit_team_member_path(team_member)%></li>
+      <% end %>
+   </ul>
 </div>
