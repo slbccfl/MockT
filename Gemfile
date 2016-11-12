@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+gem 'simplecov', :require => false, :group => :test
+gem 'traceroute'
 gem "sprockets-es6", require: "sprockets/es6"
 gem 'bootstrap-sass'
 gem 'devise'
