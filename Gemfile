@@ -1,4 +1,9 @@
 source 'https://rubygems.org'
+group :test, :development do
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+end
 gem 'simplecov', :require => false, :group => :test
 gem 'traceroute'
 gem "sprockets-es6", require: "sprockets/es6"
